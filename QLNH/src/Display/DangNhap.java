@@ -202,6 +202,7 @@ public class DangNhap extends javax.swing.JFrame {
 //        }
 String key=txtMaNV.getText();
         Auth.user=new NhanVienDAO().selectById(key);
+     
 
 if(Auth.user==null){
      JOptionPane.showMessageDialog(this, "Tài khoản hoặc mật khẩu không chính xác.");
@@ -212,8 +213,8 @@ if(Auth.user==null){
 else{
 //    JOptionPane.showMessageDialog(this, "Tài khoản hoặc mật khẩu không chính xác.");
      this.dispose();
-//     TrangChu tc=new TrangChu();
-//     tc.setVisible(true);  
+     TrangChu tc=new TrangChu();
+     tc.setVisible(true);  
 }
     }//GEN-LAST:event_btnDangNhapActionPerformed
 

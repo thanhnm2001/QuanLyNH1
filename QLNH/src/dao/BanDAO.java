@@ -7,23 +7,23 @@ package dao;
 
 import helper.JDBCHelper;
 import java.sql.ResultSet;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
-import model.NhanVien;
+import model.Ban;
 
 /**
  *
  * @author Administrator
  */
-public class NhanVienDAO extends DAO<NhanVien, String> {
+public class BanDAO extends DAO<Ban, String> {
 
     @Override
-    public void insert(NhanVien entity) {
+    public void insert(Ban entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void update(NhanVien entity) {
+    public void update(Ban entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -33,32 +33,29 @@ public class NhanVienDAO extends DAO<NhanVien, String> {
     }
 
     @Override
-    public List<NhanVien> selectAll() {
-        String sql="select * from ban";
-        return null;
-        
+    public List<Ban> selectAll() {
+        String sql="Select * from ban";
+        List<Ban> lst=new ArrayList<>();
+        try {
+            ResultSet rs=JDBCHelper.query(sql);
+            while(rs.next()){
+                String maBan=rs.getString(1);
+                String tenBan=rs.getString(2);
+                String loaiBan=rs.getString(3);
+                String trangThai=rs.getString(4);
+                Ban bn=new Ban(maBan, tenBan, trangThai, loaiBan);
+                lst.add(bn);
+            }
+          
+        } catch (Exception e) {
+        }
+          return lst;
+         
     }
 
     @Override
-    public NhanVien selectById(String key) {
-                try {
-             String sql="select * from nhanvien where manv=?";
-        ResultSet rs=JDBCHelper.query(sql, key);
-        while(rs.next()){
-            String maNV=rs.getString(1);
-            String hoTen=rs.getString(2);
-            Date ngaySinh=rs.getDate(3);
-            String SDT=rs.getString(4);
-            Boolean chucVu=rs.getBoolean(5);
-            String password=rs.getString(6);
-            String soCMT=rs.getString(7);
-            NhanVien nv=new NhanVien(maNV, hoTen, ngaySinh, SDT, chucVu, password, soCMT);
-            return nv;
-            
-        }
-        } catch (Exception e) {
-        }
-        return null;
+    public Ban selectById(String key) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

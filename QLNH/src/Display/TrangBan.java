@@ -5,17 +5,24 @@
  */
 package Display;
 
+import dao.BanDAO;
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+import model.Ban;
+
 /**
  *
  * @author Chung
  */
 public class TrangBan extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TrangBan
-     */
+    List<Ban> lst=new ArrayList<>();
+    BanDAO dao=new BanDAO();
     public TrangBan() {
         initComponents();
+        loadDataToList();
+       
     }
 
     /**
@@ -38,15 +45,15 @@ public class TrangBan extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        btnBan1 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
+        btnBan2 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
+        btnBan3 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
         jButton17 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
@@ -175,10 +182,10 @@ public class TrangBan extends javax.swing.JFrame {
         jButton6.setText("Bàn 09");
         jPanel4.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 151, 76));
 
-        jButton7.setBackground(new java.awt.Color(35, 35, 35));
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("Bàn 01");
-        jPanel4.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 151, 76));
+        btnBan1.setBackground(new java.awt.Color(35, 35, 35));
+        btnBan1.setForeground(new java.awt.Color(255, 255, 255));
+        btnBan1.setText("Bàn 01");
+        jPanel4.add(btnBan1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 151, 76));
 
         jButton8.setBackground(new java.awt.Color(35, 35, 35));
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
@@ -205,20 +212,20 @@ public class TrangBan extends javax.swing.JFrame {
         jButton12.setText("Bàn 06");
         jPanel4.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 151, 76));
 
-        jButton13.setBackground(new java.awt.Color(35, 35, 35));
-        jButton13.setForeground(new java.awt.Color(255, 255, 255));
-        jButton13.setText("Bàn 02");
-        jPanel4.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 151, 76));
+        btnBan2.setBackground(new java.awt.Color(35, 35, 35));
+        btnBan2.setForeground(new java.awt.Color(255, 255, 255));
+        btnBan2.setText("Bàn 02");
+        jPanel4.add(btnBan2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 151, 76));
 
         jButton14.setBackground(new java.awt.Color(35, 35, 35));
         jButton14.setForeground(new java.awt.Color(255, 255, 255));
         jButton14.setText("Bàn 14");
         jPanel4.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 151, 76));
 
-        jButton15.setBackground(new java.awt.Color(35, 35, 35));
-        jButton15.setForeground(new java.awt.Color(255, 255, 255));
-        jButton15.setText("Bàn 03");
-        jPanel4.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, 151, 76));
+        btnBan3.setBackground(new java.awt.Color(35, 35, 35));
+        btnBan3.setForeground(new java.awt.Color(255, 255, 255));
+        btnBan3.setText("Bàn 03");
+        jPanel4.add(btnBan3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, 151, 76));
 
         jButton16.setBackground(new java.awt.Color(35, 35, 35));
         jButton16.setForeground(new java.awt.Color(255, 255, 255));
@@ -394,13 +401,14 @@ public class TrangBan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBan1;
+    private javax.swing.JButton btnBan2;
+    private javax.swing.JButton btnBan3;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
@@ -417,7 +425,6 @@ public class TrangBan extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
@@ -426,4 +433,23 @@ public class TrangBan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
+private void loadDataToList(){
+   lst=dao.selectAll();
+    for(int i=0;i<lst.size();i++){
+        if(lst.get(i).getMaBan().equalsIgnoreCase("B01")){
+            if(lst.get(i).getTrangThai().equalsIgnoreCase("Trong")){
+                btnBan1.setBackground(Color.green);
+            }else{
+                btnBan1.setBackground(Color.red);
+            }
+        }
+        else if(lst.get(i).getMaBan().equalsIgnoreCase("B02")){
+            if(lst.get(i).getTrangThai().equalsIgnoreCase("Trong")){
+                btnBan2.setBackground(Color.green);
+            }else{
+                btnBan2.setBackground(Color.red);
+            }
+        }
+    }
+}
 }
