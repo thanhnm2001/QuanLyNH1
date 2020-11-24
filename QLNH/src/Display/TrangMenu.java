@@ -466,24 +466,24 @@ public class TrangMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
-        duan1.ThemMon tm = new duan1.ThemMon();
+        ThemMon tm = new ThemMon();
         tm.setVisible(true);
     }//GEN-LAST:event_jButton23ActionPerformed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
-//        SuaMon sm = new SuaMon();
-//        sm.setVisible(true);
+        SuaMon sm = new SuaMon();
+        sm.setVisible(true);
     }//GEN-LAST:event_jButton24ActionPerformed
 
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
-//        XoaMon xm = new XoaMon();
-//        xm.setVisible(true);
+        XoaMon xm = new XoaMon();
+        xm.setVisible(true);
     }//GEN-LAST:event_jButton25ActionPerformed
 
     private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
-//        TrangMenu3 tm3 = new TrangMenu3();
-//    tm3.setVisible(true);
-//    this.dispose();
+        TrangMenu3 tm3 = new TrangMenu3();
+    tm3.setVisible(true);
+    this.dispose();
     }//GEN-LAST:event_jButton28ActionPerformed
 
     private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
@@ -499,9 +499,9 @@ public class TrangMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMon1ActionPerformed
 
     private void jButton27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton27MouseClicked
-//    TrangMenu2 tm2 = new TrangMenu2();
-//    tm2.setVisible(true);
-//    this.dispose();
+    TrangMenu2 tm2 = new TrangMenu2();
+    tm2.setVisible(true);
+    this.dispose();
     }//GEN-LAST:event_jButton27MouseClicked
 
     /**
