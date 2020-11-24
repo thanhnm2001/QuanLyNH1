@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package duan1;
+package Display;
 
 import Class.ThongTinMon;
 import java.sql.Connection;

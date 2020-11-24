@@ -3,43 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package duan1;
+package Display;
 
 import Class.ThongTinMon;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author Chung
  */
-public class TrangMenu extends javax.swing.JFrame {
+public class TrangMenu2 extends javax.swing.JFrame {
 
     /**
-     * Creates new form TrangMenu
+     * Creates new form TrangMenu2
      */
     ArrayList<ThongTinMon> lstmon = new ArrayList<>();
 
-    public TrangMenu() {
+    public TrangMenu2() {
         initComponents();
         setLocationRelativeTo(null);
         ThongTin();
+        btnMon1.setText(lstmon.get(0).getTenmon() + " " + lstmon.get(0).getDongia());
+        btnMon2.setText(lstmon.get(1).getTenmon() + " " + lstmon.get(1).getDongia());
+        btnMon3.setText(lstmon.get(2).getTenmon() + " " + lstmon.get(2).getDongia());
+        btnMon4.setText(lstmon.get(3).getTenmon() + " " + lstmon.get(3).getDongia());
+        btnMon5.setText(lstmon.get(4).getTenmon() + " " + lstmon.get(4).getDongia());
+        btnMon6.setText(lstmon.get(5).getTenmon() + " " + lstmon.get(5).getDongia());
+        btnMon7.setText(lstmon.get(6).getTenmon() + " " + lstmon.get(6).getDongia());
 
-        btnMon1.setText(lstmon.get(7).getTenmon() + " " + lstmon.get(7).getDongia());
-        btnMon2.setText(lstmon.get(8).getTenmon() + " " + lstmon.get(8).getDongia());
-        btnMon3.setText(lstmon.get(9).getTenmon() + " " + lstmon.get(9).getDongia());
-        btnMon4.setText(lstmon.get(10).getTenmon() + " " + lstmon.get(10).getDongia());
-        btnMon5.setText(lstmon.get(11).getTenmon() + " " + lstmon.get(11).getDongia());
-        btnMon6.setText(lstmon.get(12).getTenmon() + " " + lstmon.get(12).getDongia());
-        btnMon7.setText(lstmon.get(13).getTenmon() + " " + lstmon.get(13).getDongia());
-        btnMon8.setText(lstmon.get(14).getTenmon() + " " + lstmon.get(14).getDongia());
-        btnMon9.setText(lstmon.get(15).getTenmon() + " " + lstmon.get(15).getDongia());
-        btnMon10.setText(lstmon.get(16).getTenmon() + " " + lstmon.get(16).getDongia());
     }
 
     /**
@@ -65,7 +60,7 @@ public class TrangMenu extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblDanhSachMon = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -127,7 +122,7 @@ public class TrangMenu extends javax.swing.JFrame {
         jButton2.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (1).png"))); // NOI18N
         jPanel1.add(jButton2);
 
-        jButton26.setBackground(new java.awt.Color(0, 153, 255));
+        jButton26.setBackground(new java.awt.Color(153, 153, 255));
         jButton26.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jButton26.setForeground(new java.awt.Color(255, 255, 255));
         jButton26.setText("Món Chính");
@@ -144,7 +139,7 @@ public class TrangMenu extends javax.swing.JFrame {
         });
         jPanel1.add(jButton26);
 
-        jButton27.setBackground(new java.awt.Color(153, 153, 255));
+        jButton27.setBackground(new java.awt.Color(0, 153, 255));
         jButton27.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jButton27.setForeground(new java.awt.Color(255, 255, 255));
         jButton27.setText("Đồ Uống");
@@ -154,11 +149,6 @@ public class TrangMenu extends javax.swing.JFrame {
         jButton27.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (3).png"))); // NOI18N
         jButton27.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (2).png"))); // NOI18N
         jButton27.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (1).png"))); // NOI18N
-        jButton27.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton27MouseClicked(evt);
-            }
-        });
         jPanel1.add(jButton27);
 
         jButton28.setBackground(new java.awt.Color(153, 153, 255));
@@ -234,7 +224,7 @@ public class TrangMenu extends javax.swing.JFrame {
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
         );
 
-        tblDanhSachMon.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -242,7 +232,7 @@ public class TrangMenu extends javax.swing.JFrame {
                 "", "Tên Món", "SL", "Giá", "T.Tiền", "GC"
             }
         ));
-        jScrollPane1.setViewportView(tblDanhSachMon);
+        jScrollPane1.setViewportView(jTable1);
 
         jLabel4.setText("Tổng Cộng");
 
@@ -294,12 +284,6 @@ public class TrangMenu extends javax.swing.JFrame {
 
         btnMon1.setBackground(new java.awt.Color(35, 35, 35));
         btnMon1.setForeground(new java.awt.Color(255, 255, 255));
-        btnMon1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnMon1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMon1ActionPerformed(evt);
-            }
-        });
         jPanel4.add(btnMon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 151, 76));
 
         btnMon4.setBackground(new java.awt.Color(35, 35, 35));
@@ -312,6 +296,11 @@ public class TrangMenu extends javax.swing.JFrame {
 
         btnMon8.setBackground(new java.awt.Color(35, 35, 35));
         btnMon8.setForeground(new java.awt.Color(255, 255, 255));
+        btnMon8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMon8ActionPerformed(evt);
+            }
+        });
         jPanel4.add(btnMon8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 151, 76));
 
         btnMon5.setBackground(new java.awt.Color(35, 35, 35));
@@ -406,11 +395,11 @@ public class TrangMenu extends javax.swing.JFrame {
                 .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
+                .addGap(13, 13, 13)
                 .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jButton30, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -446,7 +435,7 @@ public class TrangMenu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -458,8 +447,16 @@ public class TrangMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
-        // TODO add your handling code here:
+        TrangMenu tm = new TrangMenu();
+        tm.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton26ActionPerformed
+
+    private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
+        TrangMenu3 tm3 = new TrangMenu3();
+        tm3.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton28ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
         // TODO add your handling code here:
@@ -480,29 +477,17 @@ public class TrangMenu extends javax.swing.JFrame {
         xm.setVisible(true);
     }//GEN-LAST:event_jButton25ActionPerformed
 
-    private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
-        TrangMenu3 tm3 = new TrangMenu3();
-    tm3.setVisible(true);
-    this.dispose();
-    }//GEN-LAST:event_jButton28ActionPerformed
-
     private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
-
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton29ActionPerformed
 
     private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton30ActionPerformed
 
-    private void btnMon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMon1ActionPerformed
-
-    }//GEN-LAST:event_btnMon1ActionPerformed
-
-    private void jButton27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton27MouseClicked
-    TrangMenu2 tm2 = new TrangMenu2();
-    tm2.setVisible(true);
-    this.dispose();
-    }//GEN-LAST:event_jButton27MouseClicked
+    private void btnMon8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMon8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMon8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -521,13 +506,13 @@ public class TrangMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TrangMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrangMenu2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TrangMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrangMenu2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TrangMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrangMenu2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TrangMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrangMenu2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -535,7 +520,7 @@ public class TrangMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TrangMenu().setVisible(true);
+                new TrangMenu2().setVisible(true);
             }
         });
     }
@@ -579,9 +564,9 @@ public class TrangMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblDanhSachMon;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
-private void ThongTin() {
+    private void ThongTin() {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             String url = "jdbc:sqlserver://DESKTOP-QPFGD23:1433;databaseName=QLNH";
@@ -601,5 +586,4 @@ private void ThongTin() {
             e.printStackTrace();
         }
     }
-
 }
