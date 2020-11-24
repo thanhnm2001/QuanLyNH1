@@ -466,8 +466,8 @@ public class TrangMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
-//        ThemMon tm = new ThemMon();
-//        tm.setVisible(true);
+        duan1.ThemMon tm = new duan1.ThemMon();
+        tm.setVisible(true);
     }//GEN-LAST:event_jButton23ActionPerformed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
