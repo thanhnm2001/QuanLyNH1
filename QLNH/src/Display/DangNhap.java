@@ -212,8 +212,8 @@ if(Auth.user==null){
 else{
 //    JOptionPane.showMessageDialog(this, "Tài khoản hoặc mật khẩu không chính xác.");
      this.dispose();
-     TrangChu tc=new TrangChu();
-     tc.setVisible(true);  
+//     TrangChu tc=new TrangChu();
+//     tc.setVisible(true);  
 }
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
