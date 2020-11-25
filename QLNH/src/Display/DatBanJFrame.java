@@ -18,6 +18,7 @@ public class DatBanJFrame extends javax.swing.JFrame {
      */
     public DatBanJFrame() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -31,6 +32,7 @@ public class DatBanJFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bàn 01");
 
         jLabel1.setText("Tên khách hàng");
@@ -62,7 +64,7 @@ public class DatBanJFrame extends javax.swing.JFrame {
                         .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(290, Short.MAX_VALUE))
         );
 
@@ -89,7 +91,7 @@ public class DatBanJFrame extends javax.swing.JFrame {
      
         String sql="update ban set trangthai=? where maban=?";
         JDBCHelper.update(sql,"dang hoat dong","b01");
-        TrangBan tb=new TrangBan();
+       
         
         
     }//GEN-LAST:event_jButton1ActionPerformed

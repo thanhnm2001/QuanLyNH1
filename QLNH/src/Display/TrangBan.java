@@ -9,6 +9,7 @@ import dao.BanDAO;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import model.Ban;
 
 /**
@@ -22,6 +23,7 @@ public class TrangBan extends javax.swing.JFrame {
     public TrangBan() {
         initComponents();
         loadDataToList();
+        
        
     }
 
@@ -370,7 +372,7 @@ public class TrangBan extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton26ActionPerformed
 
     private void btnBan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan1ActionPerformed
-    
+        this.dispose();
         DatBanJFrame dbf=new DatBanJFrame();
         dbf.setVisible(true);
     }//GEN-LAST:event_btnBan1ActionPerformed

@@ -24,6 +24,7 @@ public class ChangePassword extends javax.swing.JFrame {
            getContentPane().setBackground(Color.white);
            setLocationRelativeTo(null);
            JOptionPane.showMessageDialog(this, "hhh");
+           JOptionPane.showMessageDialog(this, "DCMMCMC");
     }
 
     /**
