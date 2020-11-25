@@ -229,7 +229,7 @@ public class SuaNV extends javax.swing.JFrame {
             if (rdoql.isSelected()) {
                 chucvu = true;
             } else {
-                chucvu = true;
+                chucvu = false;
             }
             String sql = "update nhanvien\n"
                     + "set hoten =?,ngaysinh =?,sdt=?,chucvu=?,password=?,socmt=?\n"
