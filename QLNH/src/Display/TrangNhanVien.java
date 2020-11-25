@@ -337,6 +337,8 @@ public class TrangNhanVien extends javax.swing.JFrame {
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
         // TODO add your handling code here:
         new ThemNV().setVisible(true);
+        model.setRowCount(0);
+        loadtable();
 
     }//GEN-LAST:event_jButton23ActionPerformed
 
@@ -344,7 +346,7 @@ public class TrangNhanVien extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         try {
-
+            int index = tblnv.getSelectedRow();
             //xoa trong csdl va bang 
             String sql = "delete from nhanvien\n"
                     + "where manv=?";
@@ -392,12 +394,7 @@ public class TrangNhanVien extends javax.swing.JFrame {
             pm.setString(1, txttim.getText());
             ResultSet rs = pm.executeQuery();
             if (rs.next()) {
-//                tblnv.setValueAt(rs.getString(1), index, 1);
-//                 tblnv.setValueAt(rs.getString(2), index, 2);
-//                tblnv.setValueAt(rs.getString(3), index, 3);
-//                tblnv.setValueAt(rs.getString(4), index, 4);
-//                tblnv.setValueAt(rs.getString(5), index, 5);
-//                tblnv.setValueAt(rs.getString(6), index, 6);
+
                 int s5 = rs.getInt(5);
                 String chucvu;
                 if (s5 == 1) {
@@ -412,6 +409,20 @@ public class TrangNhanVien extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Không tìm thấy người học này!");
             }
+            model.setRowCount(1);
+            int s5 = rs.getInt(5);
+            String chucvu;
+            if (s5 == 1) {
+                chucvu = "Quan Ly";
+            } else {
+                chucvu = "Nhan Vien";
+            }
+            tblnv.setValueAt(rs.getString(1), index, 1);
+            tblnv.setValueAt(rs.getString(2), index, 2);
+            tblnv.setValueAt(rs.getString(3), index, 3);
+            tblnv.setValueAt(rs.getString(4), index, 4);
+            tblnv.setValueAt(chucvu, index, 5);
+            tblnv.setValueAt(rs.getString(7), index, 6);
             rs.close();
             pm.close();
 
@@ -500,5 +511,7 @@ private void loadtable() {
             JOptionPane.showMessageDialog(this, "Loi load table");
         }
     }
-
+private void check(){
+    JOptionPane.showMessageDialog(this, "YH");
+}
 }
