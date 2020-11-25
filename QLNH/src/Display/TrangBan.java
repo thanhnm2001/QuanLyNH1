@@ -185,6 +185,11 @@ public class TrangBan extends javax.swing.JFrame {
         btnBan1.setBackground(new java.awt.Color(35, 35, 35));
         btnBan1.setForeground(new java.awt.Color(255, 255, 255));
         btnBan1.setText("Bàn 01");
+        btnBan1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBan1ActionPerformed(evt);
+            }
+        });
         jPanel4.add(btnBan1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 151, 76));
 
         jButton8.setBackground(new java.awt.Color(35, 35, 35));
@@ -364,6 +369,12 @@ public class TrangBan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton26ActionPerformed
 
+    private void btnBan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBan1ActionPerformed
+    
+        DatBanJFrame dbf=new DatBanJFrame();
+        dbf.setVisible(true);
+    }//GEN-LAST:event_btnBan1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -448,6 +459,13 @@ private void loadDataToList(){
                 btnBan2.setBackground(Color.green);
             }else{
                 btnBan2.setBackground(Color.red);
+            }
+        }
+        else if(lst.get(i).getMaBan().equalsIgnoreCase("B03")){
+            if(lst.get(i).getTrangThai().equalsIgnoreCase("Trong")){
+                btnBan3.setBackground(Color.green);
+            }else{
+                btnBan3.setBackground(Color.red);
             }
         }
     }

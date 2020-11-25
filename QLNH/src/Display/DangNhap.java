@@ -49,7 +49,12 @@ public class DangNhap extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtPassword.setText("123456");
+        txtPassword.setText("123431");
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
 
         lblImage.setPreferredSize(new java.awt.Dimension(355, 340));
 
@@ -60,7 +65,7 @@ public class DangNhap extends javax.swing.JFrame {
         lblMaNV.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMaNV.setText("Tên đăng nhập");
 
-        txtMaNV.setText("TeoNV");
+        txtMaNV.setText("ThanhNm");
         txtMaNV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMaNVActionPerformed(evt);
@@ -221,6 +226,10 @@ else{
     private void btnKetThucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKetThucActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnKetThucActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
 
     /**
      * @param args the command line arguments

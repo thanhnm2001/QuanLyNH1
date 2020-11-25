@@ -103,6 +103,11 @@ public class TrangChu extends javax.swing.JFrame {
         btnDMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/chìa.png"))); // NOI18N
         btnDMK.setBorderPainted(false);
         btnDMK.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/chìa2.png"))); // NOI18N
+        btnDMK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDMKActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnDMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 420, 180, 90));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logo.png"))); // NOI18N
@@ -125,6 +130,12 @@ public class TrangChu extends javax.swing.JFrame {
     tb.setVisible(true);
     this.dispose();
     }//GEN-LAST:event_btnBanActionPerformed
+
+    private void btnDMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDMKActionPerformed
+     
+        ChangePassword cp=new ChangePassword();
+        cp.setVisible(true);
+    }//GEN-LAST:event_btnDMKActionPerformed
 
     /**
      * @param args the command line arguments

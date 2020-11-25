@@ -7,8 +7,11 @@ package dao;
 
 import helper.JDBCHelper;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.NhanVien;
 
 /**
@@ -24,7 +27,12 @@ public class NhanVienDAO extends DAO<NhanVien, String> {
 
     @Override
     public void update(NhanVien entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql="update nhanvien set password=? where manv=?";
+        try {
+            JDBCHelper.value(sql, entity.getPassword(),entity.getMaNV());
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
