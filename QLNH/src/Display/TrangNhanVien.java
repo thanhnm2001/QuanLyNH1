@@ -386,28 +386,35 @@ public class TrangNhanVien extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
- try {
+        try {
             String sql = "SELECT * FROM nhanvien where manv=?";
             PreparedStatement pm = cn.prepareStatement(sql);
             pm.setString(1, txttim.getText());
             ResultSet rs = pm.executeQuery();
             if (rs.next()) {
-                tblnv.setValueAt(rs.getString(1), index, 1);
-                 tblnv.setValueAt(rs.getString(2), index, 2);
-                tblnv.setValueAt(rs.getString(3), index, 3);
-                tblnv.setValueAt(rs.getString(4), index, 4);
-                tblnv.setValueAt(rs.getString(5), index, 5);
-                tblnv.setValueAt(rs.getString(6), index, 6);
-                JOptionPane.showMessageDialog(this, "Tim thay manv " + tblnv.getValueAt(index,1)+ "\n" + "Ho ten "+ tblnv.getValueAt(index,2)
-                +"\n"+"Ngay sinh " + tblnv.getValueAt(index,3) +"\n"+"Dien thoai " +  tblnv.getValueAt(index,4)
-                +"\n"+"Chuc vu " +  tblnv.getValueAt(index,5)
-                +"\n"+"So CMT " +  tblnv.getValueAt(index,6));
+//                tblnv.setValueAt(rs.getString(1), index, 1);
+//                 tblnv.setValueAt(rs.getString(2), index, 2);
+//                tblnv.setValueAt(rs.getString(3), index, 3);
+//                tblnv.setValueAt(rs.getString(4), index, 4);
+//                tblnv.setValueAt(rs.getString(5), index, 5);
+//                tblnv.setValueAt(rs.getString(6), index, 6);
+                int s5 = rs.getInt(5);
+                String chucvu;
+                if (s5 == 1) {
+                    chucvu = "Quan Ly";
+                } else {
+                    chucvu = "Nhan Vien";
+                }
+                JOptionPane.showMessageDialog(this, "Tim thay manv " + tblnv.getValueAt(index, 1) + "\n" + "Ho ten " + tblnv.getValueAt(index, 2)
+                        + "\n" + "Ngay sinh " + tblnv.getValueAt(index, 3) + "\n" + "Dien thoai " + tblnv.getValueAt(index, 4)
+                        + "\n" + "Chuc vu " + chucvu
+                        + "\n" + "So CMT " + tblnv.getValueAt(index, 6));
             } else {
                 JOptionPane.showMessageDialog(this, "Không tìm thấy người học này!");
             }
             rs.close();
             pm.close();
-            
+
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jButton6ActionPerformed
@@ -485,7 +492,7 @@ private void loadtable() {
                     chucvu = "Nhan Vien";
                 }
                 model.addRow(new Object[]{stt++, rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                    chucvu, rs.getString(6)});
+                    chucvu, rs.getString(7)});
             }
             rs.close();
             stm.close();

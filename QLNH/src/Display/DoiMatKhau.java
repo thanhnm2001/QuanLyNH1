@@ -25,6 +25,7 @@ public class DoiMatKhau extends javax.swing.JFrame {
          setDefaultCloseOperation(DISPOSE_ON_CLOSE);
          cn = Helper.ketnoi("QLNH");
          JOptionPane.showMessageDialog(this, "OK");
+         JOptionPane.showMessageDialog(this, "hhh");
     }
 
     /**
