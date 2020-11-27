@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,11 +24,14 @@ public class TrangMenu extends javax.swing.JFrame {
     /**
      * Creates new form TrangMenu
      */
+    DefaultTableModel model;
     ArrayList<ThongTinMon> lstmon = new ArrayList<>();
-
+    int index;
+    int i =0;
     public TrangMenu() {
         initComponents();
         setLocationRelativeTo(null);
+        model =(DefaultTableModel) tblDanhSachMon.getModel();
         ThongTin();
 
         btnMon1.setText(lstmon.get(7).getTenmon() + " " + lstmon.get(7).getDongia());
@@ -236,7 +240,7 @@ public class TrangMenu extends javax.swing.JFrame {
 
         tblDanhSachMon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null}
             },
             new String [] {
                 "", "Tên Món", "SL", "Giá", "T.Tiền", "GC"
@@ -295,6 +299,11 @@ public class TrangMenu extends javax.swing.JFrame {
         btnMon1.setBackground(new java.awt.Color(35, 35, 35));
         btnMon1.setForeground(new java.awt.Color(255, 255, 255));
         btnMon1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnMon1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMon1MouseClicked(evt);
+            }
+        });
         btnMon1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMon1ActionPerformed(evt);
@@ -504,6 +513,16 @@ public class TrangMenu extends javax.swing.JFrame {
     this.dispose();
     }//GEN-LAST:event_jButton27MouseClicked
 
+    private void btnMon1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMon1MouseClicked
+        // TODO add your handling code here:
+       try {
+            
+        tblDanhSachMon.setValueAt(i++, index, 2);
+        } catch (Exception e) {
+       
+        }
+    }//GEN-LAST:event_btnMon1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -583,10 +602,12 @@ public class TrangMenu extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 private void ThongTin() {
         try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-//            String url = "jdbc:sqlserver://DESKTOP-QPFGD23:1433;databaseName=QLNH";
-            String url="jdbc:sqlserver://THANHJOKER:1433;databaseName=QLNH";
-            Connection con = DriverManager.getConnection(url, "sa", "123");
+//            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+////            String url = "jdbc:sqlserver://DESKTOP-QPFGD23:1433;databaseName=QLNH";
+//            String url="jdbc:sqlserver://THANHJOKER:1433;databaseName=QLNH";
+Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://DESKTOP-D3866G6:1433;databaseName=QLNH";
+            Connection con = DriverManager.getConnection(url, "sa", "dongtuan123");
             String sql = "select tenmon, dongia, mama from monan ";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);

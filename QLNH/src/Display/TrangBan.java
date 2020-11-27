@@ -21,9 +21,11 @@ public class TrangBan extends javax.swing.JFrame {
     List<Ban> lst=new ArrayList<>();
     BanDAO dao=new BanDAO();
     public TrangBan() {
+        
         initComponents();
         loadDataToList();
-        
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
        
     }
 

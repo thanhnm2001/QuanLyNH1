@@ -16,6 +16,7 @@ public class TrangBan2 extends javax.swing.JFrame {
      */
     public TrangBan2() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

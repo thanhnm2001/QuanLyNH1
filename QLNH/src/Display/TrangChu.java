@@ -23,6 +23,7 @@ public class TrangChu extends javax.swing.JFrame {
     public TrangChu() {
         initComponents();
         setLocationRelativeTo(null);
+        
         setSize(858,610);
 //        ImageIcon icon1=new ImageIcon("src//image//nen.jpg");
 //        Image icon=icon1.getImage();
@@ -52,6 +53,7 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SSG");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -133,7 +135,7 @@ public class TrangChu extends javax.swing.JFrame {
     private void btnBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBanActionPerformed
     TrangBan tb = new TrangBan();
     tb.setVisible(true);
-    this.dispose();
+//    this.dispose();
     }//GEN-LAST:event_btnBanActionPerformed
 
     private void btnDMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDMKActionPerformed
