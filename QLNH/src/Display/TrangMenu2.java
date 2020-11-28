@@ -284,6 +284,11 @@ public class TrangMenu2 extends javax.swing.JFrame {
 
         btnMon1.setBackground(new java.awt.Color(35, 35, 35));
         btnMon1.setForeground(new java.awt.Color(255, 255, 255));
+        btnMon1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMon1MouseClicked(evt);
+            }
+        });
         jPanel4.add(btnMon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 151, 76));
 
         btnMon4.setBackground(new java.awt.Color(35, 35, 35));
@@ -489,6 +494,11 @@ public class TrangMenu2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMon8ActionPerformed
 
+    private void btnMon1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMon1MouseClicked
+        // TODO add your handling code here:
+            
+    }//GEN-LAST:event_btnMon1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -570,6 +580,7 @@ public class TrangMenu2 extends javax.swing.JFrame {
        try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             String url = "jdbc:sqlserver://DESKTOP-QPFGD23:1433;databaseName=QLNH";
+
             Connection con = DriverManager.getConnection(url, "sa", "123");
             String sql = "select tenmon, dongia, mama, anh from monan ";
             Statement stm = con.createStatement();

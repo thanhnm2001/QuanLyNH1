@@ -80,8 +80,11 @@
   <SubComponents>
     <Component class="javax.swing.JPasswordField" name="txtPassword">
       <Properties>
-        <Property name="text" type="java.lang.String" value="123456"/>
+        <Property name="text" type="java.lang.String" value="123431"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPasswordActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblImage">
       <Properties>
@@ -111,7 +114,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtMaNV">
       <Properties>
-        <Property name="text" type="java.lang.String" value="TeoNV"/>
+        <Property name="text" type="java.lang.String" value="ThanhNm"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMaNVActionPerformed"/>

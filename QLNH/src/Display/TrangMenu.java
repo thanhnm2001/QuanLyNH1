@@ -6,6 +6,7 @@
 package Display;
 
 import Class.ThongTinMon;
+import java.awt.Color;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -53,16 +54,25 @@ public class TrangMenu extends javax.swing.JFrame {
 //        lblMon2.setText("<html>"+lstmon.get(1).getTenmon() + "<br>" + lstmon.get(1).getDongia() +"<html>");
         
           for(int i=0; i<lstmon.size(); i++){
-              JPanel pn = new JPanel();
-              pn.setSize(160, 190);
+              JPanel pn = new JPanel(lstmon.get(i).getTenmon());
+              pn.setSize(150, 170);
+              pn.setBackground(Color.yellow);
               JLabel lbl1 = new JLabel();
               JLabel lbl2 = new JLabel();
               lbl1.setSize(135, 110);
               lbl2.setSize(135, 48);
-              pn.add(lbl2);
+              
+              
+              ImageIcon icon1 = new ImageIcon("src//image//" + lstmon.get(i).getAnh());
+              Image icon = icon1.getImage();
+              ImageIcon icon2 = new ImageIcon(icon.getScaledInstance(lbl1.getWidth(), lbl1.getHeight(), Image.SCALE_SMOOTH));
+              lbl1.setIcon(icon2);
+              
+              lbl2.setText("<html>"+lstmon.get(i).getTenmon() + "<br>" + lstmon.get(i).getDongia() +"<html>");
               pn.add(lbl1);
+              pn.add(lbl2);
+              
               jPanel16.add(pn);
-
           }
 
     }

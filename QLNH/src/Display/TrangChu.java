@@ -23,6 +23,7 @@ public class TrangChu extends javax.swing.JFrame {
     public TrangChu() {
         initComponents();
         setLocationRelativeTo(null);
+        
         setSize(858,610);
 //        ImageIcon icon1=new ImageIcon("src//image//nen.jpg");
 //        Image icon=icon1.getImage();
@@ -52,6 +53,7 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SSG");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -68,6 +70,11 @@ public class TrangChu extends javax.swing.JFrame {
         btnNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/nhanvien.png"))); // NOI18N
         btnNhanVien.setBorderPainted(false);
         btnNhanVien.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/nhanvien1.png"))); // NOI18N
+        btnNhanVien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhanVienActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 180, 90));
 
         btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/menu.png"))); // NOI18N
@@ -103,6 +110,11 @@ public class TrangChu extends javax.swing.JFrame {
         btnDMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/chìa.png"))); // NOI18N
         btnDMK.setBorderPainted(false);
         btnDMK.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/chìa2.png"))); // NOI18N
+        btnDMK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDMKActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnDMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 420, 180, 90));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logo.png"))); // NOI18N
@@ -123,8 +135,20 @@ public class TrangChu extends javax.swing.JFrame {
     private void btnBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBanActionPerformed
     TrangBan tb = new TrangBan();
     tb.setVisible(true);
-    this.dispose();
+//    this.dispose();
     }//GEN-LAST:event_btnBanActionPerformed
+
+    private void btnDMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDMKActionPerformed
+     
+        ChangePassword cp=new ChangePassword();
+        cp.setVisible(true);
+    }//GEN-LAST:event_btnDMKActionPerformed
+
+    private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
+       
+        TrangNhanVien tnv=new TrangNhanVien();
+        tnv.setVisible(true);
+    }//GEN-LAST:event_btnNhanVienActionPerformed
 
     /**
      * @param args the command line arguments
