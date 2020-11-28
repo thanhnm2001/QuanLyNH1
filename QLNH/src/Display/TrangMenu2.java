@@ -275,7 +275,7 @@ public class TrangMenu2 extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Món Chính");
+        jLabel1.setText("Đồ Uống");
         jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 98, 33));
 
         btnMon7.setBackground(new java.awt.Color(35, 35, 35));
@@ -567,18 +567,19 @@ public class TrangMenu2 extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
     private void ThongTin() {
-        try {
+       try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             String url = "jdbc:sqlserver://DESKTOP-QPFGD23:1433;databaseName=QLNH";
             Connection con = DriverManager.getConnection(url, "sa", "123");
-            String sql = "select tenmon, dongia, mama from monan ";
+            String sql = "select tenmon, dongia, mama, anh from monan ";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
             while (rs.next()) {
                 String mama = rs.getString(3);
                 String tenmon = rs.getString(1);
                 float dongia = rs.getFloat(2);
-                ThongTinMon tt = new ThongTinMon(mama, tenmon, dongia);
+                String anh = rs.getString(4);
+                ThongTinMon tt = new ThongTinMon(mama, tenmon, dongia, anh);
                 lstmon.add(tt);
 
             }

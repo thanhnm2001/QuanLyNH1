@@ -5,9 +5,13 @@
  */
 package Display;
 
+import Class.ThongTinMon;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +23,7 @@ public class ThemMon extends javax.swing.JFrame {
     /**
      * Creates new form ThemMon
      */
+    ArrayList<ThongTinMon> lstmon = new ArrayList<>();
     public ThemMon() {
         initComponents();
         setLocationRelativeTo(null);
@@ -229,8 +234,31 @@ public class ThemMon extends javax.swing.JFrame {
             ps.setString(5, cboTrangThai.getSelectedItem() + "");
             ps.executeUpdate();
             JOptionPane.showMessageDialog(this, "Save thành công!");
-
+            loadData();
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private void loadData(){
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://DESKTOP-QPFGD23:1433;databaseName=QLNH";
+            Connection cn = DriverManager.getConnection(url, "sa", "123");
+            String sql = "select tenmon, dongia, mama, anh from monan";
+            Statement stm = cn.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                String mama = rs.getString(3);
+                String tenmon = rs.getString(1);
+                float dongia = rs.getFloat(2);
+                String anh = rs.getString(4);
+                ThongTinMon tt = new ThongTinMon(mama, tenmon, dongia, anh);
+                lstmon.add(tt);
+            }
+            rs.close();
+            stm.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Lỗi load data!");
             e.printStackTrace();
         }
     }

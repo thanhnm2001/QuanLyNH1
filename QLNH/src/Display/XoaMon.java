@@ -5,11 +5,13 @@
  */
 package Display;
 
+import Class.ThongTinMon;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,9 +24,11 @@ public class XoaMon extends javax.swing.JFrame {
      * Creates new form XoaMon
      */
     int index;
+    ArrayList<ThongTinMon> lstmon = new ArrayList<>();
     public XoaMon() {
         initComponents();
         setLocationRelativeTo(null);
+        ThongTin();
         loadDataToCombo();
     }
 
@@ -257,6 +261,27 @@ private void xoa() {
             stm.close();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Lỗi load data to combo!");
+            e.printStackTrace();
+        }
+    }
+    private void ThongTin() {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://DESKTOP-QPFGD23:1433;databaseName=QLNH";
+            Connection con = DriverManager.getConnection(url, "sa", "123");
+            String sql = "select tenmon, dongia, mama, anh from monan ";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                String mama = rs.getString(3);
+                String tenmon = rs.getString(1);
+                float dongia = rs.getFloat(2);
+                String anh = rs.getString(4);
+                ThongTinMon tt = new ThongTinMon(mama, tenmon, dongia, anh);
+                lstmon.add(tt);
+
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
