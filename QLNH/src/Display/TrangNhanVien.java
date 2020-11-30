@@ -362,11 +362,11 @@ public class TrangNhanVien extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Khong con du lieu de xoa");
                 return;
             }
-            int hoi = JOptionPane.showConfirmDialog(this, "Ban muon xoa ma nhan vien " + tblnv.getValueAt(index, 1));
+            int hoi = JOptionPane.showConfirmDialog(this, "Bạn muốn xóa mã nhân viên " + tblnv.getValueAt(index, 1));
             if (hoi != JOptionPane.YES_OPTION) {
                 return;
             }
-              lstnv.remove(index);
+            lstnv.remove(index);
             //xoa trong csdl va bang%
             String sql = "delete from nhanvien\n"
                     + "where manv=?";
@@ -375,14 +375,14 @@ public class TrangNhanVien extends javax.swing.JFrame {
             // dien gia tri cho cac dau
             pstm.setString(1, tblnv.getValueAt(index, 1) + "");
             pstm.executeUpdate();
-  JOptionPane.showMessageDialog(this, "xoa thanh cong");
-model.setRowCount(0);
-                loadtable();
-               showdetail();
+            JOptionPane.showMessageDialog(this, "Xóa thành công");
+            model.setRowCount(0);
+            loadtable();
+            showdetail();
 //            showdetail();
-           
+
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Khong xoa dc");
+            JOptionPane.showMessageDialog(this, "Không xóa được nhân viên này!!!");
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnxoaActionPerformed
@@ -421,9 +421,9 @@ model.setRowCount(0);
                 int s5 = rs.getInt(5);
                 String chucvu;
                 if (s5 == 1) {
-                    chucvu = "Quan Ly";
+                    chucvu = "Quản Lý";
                 } else {
-                    chucvu = "Nhan Vien";
+                    chucvu = "Nhân viên";
                 }
                 tblnv.setValueAt(rs.getString(1), index, 1);
                 tblnv.setValueAt(rs.getString(2), index, 2);
@@ -528,9 +528,9 @@ private void loadtable() {
                 int s5 = rs.getInt(5);
                 String chucvu;
                 if (s5 == 1) {
-                    chucvu = "Quan Ly";
+                    chucvu = "Quản Lý";
                 } else {
-                    chucvu = "Nhan Vien";
+                    chucvu = "Nhân Viên";
                 }
                 model.addRow(new Object[]{stt++, rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
                     chucvu, rs.getString(7)});
@@ -538,7 +538,7 @@ private void loadtable() {
             rs.close();
             stm.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Loi load table");
+            JOptionPane.showMessageDialog(this, "Lỗi load table ");
         }
     }
 
@@ -552,9 +552,9 @@ private void loadtable() {
                 int s5 = rs.getInt(5);
                 String chucvu;
                 if (s5 == 1) {
-                    chucvu = "Quan Ly";
+                    chucvu = "Quản Lý";
                 } else {
-                    chucvu = "Nhan Vien";
+                    chucvu = "Nhân viên";
                 }
                 lstnv.add(new NhanVien(rs.getString(1), rs.getString(2), rs.getDate(3), rs.getString(4),
                         rs.getBoolean(5), rs.getString(6), rs.getString(7)));
@@ -563,7 +563,7 @@ private void loadtable() {
             rs.close();
             stm.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Loi load table");
+            JOptionPane.showMessageDialog(this, "Lỗi load data");
         }
     }
 
