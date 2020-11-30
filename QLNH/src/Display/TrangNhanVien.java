@@ -27,11 +27,12 @@ public class TrangNhanVien extends javax.swing.JFrame {
     Connection cn;
     int index;
     ArrayList<NhanVien> lstnv = new ArrayList<>();
+
     public TrangNhanVien() {
         initComponents();
         setLocationRelativeTo(null);
         cn = Helper.ketnoi("QLNH");
-       setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 //        if(cn!= null){
 //            JOptionPane.showMessageDialog(this, "Dang nhap thanh cong");
 //        }else{
@@ -40,7 +41,7 @@ public class TrangNhanVien extends javax.swing.JFrame {
         model = new DefaultTableModel();
         model = (DefaultTableModel) tblnv.getModel();
         loaddata();
-       
+
         loadtable();
 
     }
@@ -331,8 +332,10 @@ public class TrangNhanVien extends javax.swing.JFrame {
                 String ngaysinh = tblnv.getValueAt(index, 3) + "";
                 String sdt = tblnv.getValueAt(index, 4) + "";
                 String cmt = tblnv.getValueAt(index, 6) + "";
-                new SuaNV(manv, hoten, ngaysinh, sdt, cmt).setVisible(true);
+                String chucVu = tblnv.getValueAt(index, 5) + "";
 
+                new SuaNV(manv, hoten, ngaysinh, sdt, cmt, chucVu).setVisible(true);
+                this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Moi ban chon dong can hien thi");
             }
@@ -346,8 +349,7 @@ public class TrangNhanVien extends javax.swing.JFrame {
     private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
         // TODO add your handling code here:
         new ThemNV().setVisible(true);
-        model.setRowCount(0);
-        loadtable();
+        this.dispose();
 
     }//GEN-LAST:event_btnaddActionPerformed
 
@@ -355,15 +357,17 @@ public class TrangNhanVien extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         try {
-            int index = tblnv.getSelectedRow();
-            //xoa trong csdl va bang
-            if(index >0){
-                 int hoi = JOptionPane.showConfirmDialog(this, "Bạn muốn xóa mã nhân viên " + tblnv.getValueAt(index, 1));
-            if(hoi != JOptionPane.YES_NO_OPTION){
+//             index = tblnv.getSelectedRow();
+            if (lstnv.size() <= 0) {
+                JOptionPane.showMessageDialog(this, "Khong con du lieu de xoa");
                 return;
             }
+            int hoi = JOptionPane.showConfirmDialog(this, "Ban muon xoa ma nhan vien " + tblnv.getValueAt(index, 1));
+            if (hoi != JOptionPane.YES_OPTION) {
+                return;
             }
-           
+              lstnv.remove(index);
+            //xoa trong csdl va bang%
             String sql = "delete from nhanvien\n"
                     + "where manv=?";
 
@@ -371,9 +375,12 @@ public class TrangNhanVien extends javax.swing.JFrame {
             // dien gia tri cho cac dau
             pstm.setString(1, tblnv.getValueAt(index, 1) + "");
             pstm.executeUpdate();
-            JOptionPane.showMessageDialog(this, "Xoa thanh cong");
-            model.setRowCount(0);
-            loadtable();
+  JOptionPane.showMessageDialog(this, "xoa thanh cong");
+model.setRowCount(0);
+                loadtable();
+               showdetail();
+//            showdetail();
+           
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Khong xoa dc");
             e.printStackTrace();
@@ -446,7 +453,7 @@ public class TrangNhanVien extends javax.swing.JFrame {
             index = tblnv.getSelectedRow();
             if (index >= 0) {
 //                NhanVien s = lstnv.get(index);
-               
+
                 showdetail();
             }
         } catch (Exception e) {
@@ -534,7 +541,8 @@ private void loadtable() {
             JOptionPane.showMessageDialog(this, "Loi load table");
         }
     }
-private void loaddata() {
+
+    private void loaddata() {
         try {
             String sql = "select * from nhanvien";
             Statement stm = cn.createStatement();
@@ -548,9 +556,9 @@ private void loaddata() {
                 } else {
                     chucvu = "Nhan Vien";
                 }
-                    lstnv.add(new NhanVien(rs.getString(1), rs.getString(2),rs.getDate(3), rs.getString(4) ,
-                           rs.getBoolean(5), rs.getString(6),rs.getString(7)));
-                
+                lstnv.add(new NhanVien(rs.getString(1), rs.getString(2), rs.getDate(3), rs.getString(4),
+                        rs.getBoolean(5), rs.getString(6), rs.getString(7)));
+
             }
             rs.close();
             stm.close();
@@ -560,7 +568,7 @@ private void loaddata() {
     }
 
     private void showdetail() {
-     NhanVien s = lstnv.get(index);
-     lblcurrrent.setText("Tổng số bản ghi: " + (index + 1) + "/" + lstnv.size());
+        NhanVien s = lstnv.get(index);
+        lblcurrrent.setText("Tổng số bản ghi: " + (index + 1) + "/" + lstnv.size());
     }
 }

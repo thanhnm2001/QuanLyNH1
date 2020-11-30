@@ -7,8 +7,11 @@ package Display;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,8 +23,8 @@ public class SuaNV extends javax.swing.JFrame {
      * Creates new form SuaNV
      */
     Connection cn;
-   
-    public SuaNV(String manv, String hoten, String ngaysinh, String sdt,String cmt) {
+    DefaultTableModel model;
+    public SuaNV(String manv, String hoten, String ngaysinh, String sdt,String cmt,String chucVU) {
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -33,6 +36,11 @@ public class SuaNV extends javax.swing.JFrame {
         txtngaysinh.setText(ngaysinh);
         txtsodt.setText(sdt);
         txtsocmt.setText(cmt);
+        if(chucVU.equalsIgnoreCase("Quan Ly")){
+            rdoql.setSelected(true);
+        }else{
+            rdonv.setSelected(true);
+        }
         
         
         
@@ -106,6 +114,11 @@ public class SuaNV extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 51, 51));
         jButton3.setText("Bỏ Qua");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(rdoql);
         rdoql.setText("Quản Lý");
@@ -137,22 +150,17 @@ public class SuaNV extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(105, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtngaysinh, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtsodt, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtsodt, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(119, 119, 119)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -184,7 +192,7 @@ public class SuaNV extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtsocmt, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,7 +284,11 @@ public class SuaNV extends javax.swing.JFrame {
             pstm.executeUpdate();
            
             JOptionPane.showMessageDialog(this, "sua thanh cong");
+            new TrangNhanVien().setVisible(true);        
+            loadtable();
+           
             }
+             this.dispose();
           
                
         } catch (Exception e) {
@@ -293,6 +305,11 @@ public class SuaNV extends javax.swing.JFrame {
     private void txtmanvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmanvActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtmanvActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+      new TrangNhanVien().setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -350,7 +367,30 @@ public class SuaNV extends javax.swing.JFrame {
     private javax.swing.JTextField txtsocmt;
     private javax.swing.JTextField txtsodt;
     // End of variables declaration//GEN-END:variables
-private boolean chekfrom() {
+private void loadtable() {
+        try {
+            String sql = "select * from nhanvien";
+            Statement stm = cn.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            int stt = 1;
+            while (rs.next()) {
+                int s5 = rs.getInt(5);
+                String chucvu;
+                if (s5 == 1) {
+                    chucvu = "Quan Ly";
+                } else {
+                    chucvu = "Nhan Vien";
+                }
+                model.addRow(new Object[]{stt++, rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                    chucvu, rs.getString(7)});
+            }
+            rs.close();
+            stm.close();
+        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "Loi load table");
+        }
+    }
+    private boolean chekfrom() {
         try {
             if (txthoten.getText().equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(this, "Khong de trong ho ten");

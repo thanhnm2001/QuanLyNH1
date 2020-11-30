@@ -7,8 +7,11 @@ package Display;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,12 +23,13 @@ public class ThemNV extends javax.swing.JFrame {
      * Creates new form ThemNV
      */
     Connection cn;
+    DefaultTableModel model;
 
     public ThemNV() {
         initComponents();
         setLocationRelativeTo(null);
-         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-         cn = Helper.ketnoi("QLNH");
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        cn = Helper.ketnoi("QLNH");
     }
 
     /**
@@ -195,7 +199,7 @@ public class ThemNV extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rdoql)
                             .addComponent(rdonv))
                         .addGap(18, 18, 18)
@@ -250,7 +254,11 @@ public class ThemNV extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-     add();
+        try {
+            add();
+
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txthotenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txthotenActionPerformed
@@ -267,6 +275,7 @@ public class ThemNV extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        new TrangNhanVien().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void txtngaysinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtngaysinhActionPerformed
@@ -335,45 +344,70 @@ public class ThemNV extends javax.swing.JFrame {
     private javax.swing.JTextField txtsocmt;
     private javax.swing.JTextField txtsodt;
     // End of variables declaration//GEN-END:variables
- 
-
+ private void loadtable() {
+        try {
+            String sql = "select * from nhanvien";
+            Statement stm = cn.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            int stt = 1;
+            while (rs.next()) {
+                int s5 = rs.getInt(5);
+                String chucvu;
+                if (s5 == 1) {
+                    chucvu = "Quan Ly";
+                } else {
+                    chucvu = "Nhan Vien";
+                }
+                model.addRow(new Object[]{stt++, rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                    chucvu, rs.getString(7)});
+            }
+            rs.close();
+            stm.close();
+        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "Loi load table");
+        }
+    }
 
     private void add() {
         try {
-            if(chekfrom() == true){
+            if (chekfrom() == true) {
                 return;
-            }
-            String hoten = txthoten.getText();
-            String sodt = txtsodt.getText();
-            String ngaysinh = txtngaysinh.getText();
-            String cmt = txtsocmt.getText();
-            String manv = txtmanv.getText();
-            String matkhau = txtpass.getText();
-            boolean chucvu;
-            if (rdoql.isSelected()) {
-                chucvu = true;
             } else {
-                chucvu = false;
-            }
-            String sql = "insert into nhanvien values(?,?,?,?,?,?,?)";
+                String hoten = txthoten.getText();
+                String sodt = txtsodt.getText();
+                String ngaysinh = txtngaysinh.getText();
+                String cmt = txtsocmt.getText();
+                String manv = txtmanv.getText();
+                String matkhau = txtpass.getText();
+                boolean chucvu;
+                if (rdoql.isSelected()) {
+                    chucvu = true;
+                } else {
+                    chucvu = false;
+                }
+                String sql = "insert into nhanvien values(?,?,?,?,?,?,?)";
 
-            PreparedStatement pstm = cn.prepareStatement(sql);
-            pstm.setString(1, manv);
-            pstm.setString(2, hoten);
-            pstm.setString(3, ngaysinh);
-            pstm.setString(4, sodt);
-            pstm.setBoolean(5, chucvu);
-            pstm.setString(6, matkhau);
-            pstm.setString(7, cmt);
-            pstm.executeUpdate();
-           
+                PreparedStatement pstm = cn.prepareStatement(sql);
+                pstm.setString(1, manv);
+                pstm.setString(2, hoten);
+                pstm.setString(3, ngaysinh);
+                pstm.setString(4, sodt);
+                pstm.setBoolean(5, chucvu);
+                pstm.setString(6, matkhau);
+                pstm.setString(7, cmt);
+                pstm.executeUpdate();
+
                 JOptionPane.showMessageDialog(this, "Them thanh cong");
-               
+                new TrangNhanVien().setVisible(true);
+                loadtable();
+            }
+            this.dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Loi add");
 //            e.printStackTrace();
         }
     }
+
     private boolean chekfrom() {
         try {
             if (txthoten.getText().equalsIgnoreCase("")) {
@@ -386,7 +420,7 @@ public class ThemNV extends javax.swing.JFrame {
                 txtsodt.requestFocus();
                 return true;
             }
-           
+
             if (txtngaysinh.getText().equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(this, "Không để trống phần ngày sinh");
                 txtngaysinh.requestFocus();
@@ -397,17 +431,17 @@ public class ThemNV extends javax.swing.JFrame {
                 txtsocmt.requestFocus();
                 return true;
             }
-              if (txtmanv.getText().equalsIgnoreCase("")) {
+            if (txtmanv.getText().equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(this, "Không để trống tên đăng nhập");
                 txtmanv.requestFocus();
                 return true;
             }
-             if (txtpass.getText().equalsIgnoreCase("")) {
+            if (txtpass.getText().equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(this, "Không để trống mật khẩu");
                 txtpass.requestFocus();
                 return true;
             }
-          
+
 //          int so;
 //            try {
 //                so = Integer.parseInt(txtsodt.getText());
@@ -419,21 +453,21 @@ public class ThemNV extends javax.swing.JFrame {
 //            } catch (Exception e) {
 //               JOptionPane.showMessageDialog(this, "Số điện thoại phải là số");
 //            }
-              String mausdt = "0\\d{9,10}";
+            String mausdt = "0\\d{9,10}";
             String sodienthoai = txtsodt.getText();
             if (!sodienthoai.matches(mausdt)) {
                 JOptionPane.showMessageDialog(this, "Vui lòng nhập số điện thoại có thật");
                 txtsodt.requestFocus();
                 return true;
             }
-              String mausocmt = "\\d{10}";
+            String mausocmt = "\\d{10}";
             String socccd = txtsocmt.getText();
             if (!socccd.matches(mausocmt)) {
                 JOptionPane.showMessageDialog(this, "Vui lòng nhập đúng định dạng số chứng minh thư");
                 txtsocmt.requestFocus();
                 return true;
             }
-            
+
 //             int socccd;
 //            try {
 //                socccd = Integer.parseInt(txtsocmt.getText());
@@ -445,14 +479,10 @@ public class ThemNV extends javax.swing.JFrame {
 //            } catch (Exception e) {
 //               JOptionPane.showMessageDialog(this, "Số điện thoại phải là số");
 //            }
-
-
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Loi check form");
         }
         return false;
     }
-
 
 }
