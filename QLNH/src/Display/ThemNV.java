@@ -405,7 +405,7 @@ public class ThemNV extends javax.swing.JFrame {
             }
             this.dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Dữ liệu sai ở phần ngày sinh");
+            JOptionPane.showMessageDialog(this, "Dữ liệu lỗi không thêm được");
 //            e.printStackTrace();
         }
     }
@@ -462,6 +462,7 @@ public class ThemNV extends javax.swing.JFrame {
                 txtsodt.requestFocus();
                 return true;
             }
+           
             String mausocmt = "\\d{10}";
             String socccd = txtsocmt.getText();
             if (!socccd.matches(mausocmt)) {

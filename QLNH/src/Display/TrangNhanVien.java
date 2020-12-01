@@ -41,7 +41,10 @@ public class TrangNhanVien extends javax.swing.JFrame {
         model = new DefaultTableModel();
         model = (DefaultTableModel) tblnv.getModel();
         loaddata();
-
+          if (lstnv.size() > 0) {
+                index = 0;
+                showdetail();
+            }
         loadtable();
 
     }
@@ -63,7 +66,7 @@ public class TrangNhanVien extends javax.swing.JFrame {
         btnxoa = new javax.swing.JButton();
         btndoimk = new javax.swing.JButton();
         txttim = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
+        btntim = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblnv = new javax.swing.JTable();
         lblcurrrent = new javax.swing.JTextField();
@@ -154,13 +157,13 @@ public class TrangNhanVien extends javax.swing.JFrame {
         jPanel4.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 840, -1));
         jPanel4.add(txttim, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 200, 40));
 
-        jButton6.setText("Tìm kiếm");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btntim.setText("Tìm kiếm");
+        btntim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btntimActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 150, 40));
+        jPanel4.add(btntim, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 150, 40));
 
         tblnv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -359,7 +362,7 @@ public class TrangNhanVien extends javax.swing.JFrame {
         try {
 //             index = tblnv.getSelectedRow();
             if (lstnv.size() <= 0) {
-                JOptionPane.showMessageDialog(this, "Khong con du lieu de xoa");
+                JOptionPane.showMessageDialog(this, "Không còn dữ liệu để xóa");
                 return;
             }
             int hoi = JOptionPane.showConfirmDialog(this, "Bạn muốn xóa mã nhân viên " + tblnv.getValueAt(index, 1));
@@ -389,7 +392,20 @@ public class TrangNhanVien extends javax.swing.JFrame {
 
     private void btndoimkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndoimkActionPerformed
         // TODO add your handling code here:
-        new DoiMatKhau().setVisible(true);
+//        try {
+//            int index = tblnv.getSelectedRow();
+//            if (index >= 0) {
+//                String manv = tblnv.getValueAt(index, 1) + "";             
+//             new DoiMatKhau(manv).setVisible(true);
+//                this.dispose();
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Mời bạn chọn dòng hiển thị");
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+       new DoiMatKhau().setVisible(true);
+       this.dispose();
 
     }//GEN-LAST:event_btndoimkActionPerformed
 
@@ -409,7 +425,7 @@ public class TrangNhanVien extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton27ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btntimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntimActionPerformed
         // TODO add your handling code here:
         try {
             String sql = "SELECT * FROM nhanvien where manv=?";
@@ -445,7 +461,7 @@ public class TrangNhanVien extends javax.swing.JFrame {
 
         } catch (Exception e) {
         }
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btntimActionPerformed
 
     private void tblnvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblnvMouseClicked
         // TODO add your handling code here:
@@ -498,6 +514,7 @@ public class TrangNhanVien extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnadd;
     private javax.swing.JButton btndoimk;
+    private javax.swing.JButton btntim;
     private javax.swing.JButton btnupdate;
     private javax.swing.JButton btnxoa;
     private javax.swing.JButton jButton1;
@@ -507,7 +524,6 @@ public class TrangNhanVien extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
