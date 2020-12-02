@@ -5,10 +5,18 @@
  */
 package Display;
 
+import Class.ThongTinMon;
+import java.awt.Image;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -19,6 +27,8 @@ public class ThemMon extends javax.swing.JFrame {
     /**
      * Creates new form ThemMon
      */
+    ArrayList<ThongTinMon> lstmon = new ArrayList<>();
+
     public ThemMon() {
         initComponents();
         setLocationRelativeTo(null);
@@ -142,12 +152,12 @@ public class ThemMon extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(btnBoQua, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(374, Short.MAX_VALUE)
+                    .addContainerGap(357, Short.MAX_VALUE)
                     .addComponent(btnThemMon, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(26, 26, 26)))
         );
@@ -160,7 +170,7 @@ public class ThemMon extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThemMonActionPerformed
 
     private void btnBoQuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBoQuaActionPerformed
-    this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnBoQuaActionPerformed
 
     /**
@@ -216,22 +226,117 @@ public class ThemMon extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private void themMon() {
         try {
+            if (check() == true && checkma() == true) {
 
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                String url = "jdbc:sqlserver://DESKTOP-QPFGD23:1433;databaseName=QLNH";
+                Connection con = DriverManager.getConnection(url, "sa", "123");
+                String sql = "insert into monan values(?,?,?,?,?,?)";
+
+                JFileChooser fchoose = new JFileChooser();
+                FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                        "JPG & GIF Images", "jpg");
+                fchoose.setFileFilter(filter);
+                int hoi = fchoose.showOpenDialog(this);
+
+                if (hoi == JFileChooser.APPROVE_OPTION) {
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this, "Chưa chọn ảnh món ăn!");
+                    return;
+                }
+                String filename = fchoose.getSelectedFile().getName();
+                PreparedStatement ps = con.prepareStatement(sql);
+                ps.setString(1, txtMaMon.getText());
+                ps.setString(2, txtTenMon.getText());
+                ps.setFloat(3, Float.parseFloat(txtDonGia.getText()));
+                ps.setString(4, (txtMoTa.getText()));
+                ps.setString(5, cboTrangThai.getSelectedItem() + "");
+                ps.setString(6, filename);
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Save thành công!");
+                loadData();
+            }
+        } catch (Exception e) {
+
+        }
+    }
+
+    private void loadData() {
+        try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             String url = "jdbc:sqlserver://DESKTOP-QPFGD23:1433;databaseName=QLNH";
-            Connection con = DriverManager.getConnection(url, "sa", "123");
-            String sql = "insert into monan values(?,?,?,?,?)";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, txtMaMon.getText());
-            ps.setString(2, txtTenMon.getText());
-            ps.setFloat(3, Float.parseFloat(txtDonGia.getText()));
-            ps.setString(4, (txtMoTa.getText()));
-            ps.setString(5, cboTrangThai.getSelectedItem() + "");
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(this, "Save thành công!");
+            Connection cn = DriverManager.getConnection(url, "sa", "123");
+            String sql = "select tenmon, dongia, mama, anh from monan";
+            Statement stm = cn.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                String mama = rs.getString(3);
+                String tenmon = rs.getString(1);
+                float dongia = rs.getFloat(2);
+                String anh = rs.getString(4);
+                ThongTinMon tt = new ThongTinMon(mama, tenmon, dongia, anh);
+                lstmon.add(tt);
+            }
+            rs.close();
+            stm.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Lỗi load data!");
+            e.printStackTrace();
+        }
+    }
+
+    private boolean check() {
+        try {
+            if (txtMaMon.getText().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(this, "Không để trống mã món");
+                txtMaMon.requestFocus();
+                return false;
+            }
+            if (txtTenMon.getText().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(this, "Không để trống tên món");
+                txtTenMon.requestFocus();
+                return false;
+            }
+            if (txtDonGia.getText().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(this, "Không để trống đơn giá");
+                txtDonGia.requestFocus();
+                return false;
+            }
+            try {
+                float gia = Float.parseFloat(txtDonGia.getText());
+                if (gia < 0) {
+                    JOptionPane.showMessageDialog(this, "Nhập giá lớn hơn 0");
+                    txtDonGia.requestFocus();
+                    return false;
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Sai định dạng giá");
+                txtDonGia.requestFocus();
+                return false;
+            }
+
+            if (txtMoTa.getText().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(this, "Không để trống mô tả");
+                txtMoTa.requestFocus();
+                return false;
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return true;
+
+    }
+
+    public boolean checkma() {
+        for (ThongTinMon x : lstmon) {
+            if (txtMaMon.getText().equals(x.getMaMa())) {
+                JOptionPane.showMessageDialog(this, "Không được nhập trùng mã món");
+                txtMaMon.requestFocus();
+                return false;
+            }
+        }
+        return true;
     }
 }

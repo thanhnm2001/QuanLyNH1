@@ -13,20 +13,34 @@ public class ThongTinMon {
     String maMa;
      String tenmon;
      float dongia;
+     String anh;
 
     public ThongTinMon() {
     }
 
-    public ThongTinMon(String maMa, String tenmon, float dongia) {
+    public ThongTinMon(String maMa, String tenmon, float dongia, String anh) {
         this.maMa = maMa;
         this.tenmon = tenmon;
         this.dongia = dongia;
+        this.anh = anh;
+    }
+
+    public String getAnh() {
+        return anh;
+    }
+
+    public void setAnh(String anh) {
+        this.anh = anh;
     }
 
     @Override
     public String toString() {
-        return "ThongTinMon{" + "maMa=" + maMa + ", tenmon=" + tenmon + ", dongia=" + dongia + '}';
+        return "ThongTinMon{" + "maMa=" + maMa + ", tenmon=" + tenmon + ", dongia=" + dongia + ", anh=" + anh + '}';
     }
+
+    
+
+    
 
     public String getMaMa() {
         return maMa;

@@ -5,11 +5,13 @@
  */
 package Display;
 
+import Class.ThongTinMon;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,9 +24,11 @@ public class XoaMon extends javax.swing.JFrame {
      * Creates new form XoaMon
      */
     int index;
+    ArrayList<ThongTinMon> lstmon = new ArrayList<>();
     public XoaMon() {
         initComponents();
         setLocationRelativeTo(null);
+        ThongTin();
         loadDataToCombo();
     }
 
@@ -37,18 +41,15 @@ public class XoaMon extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         cboMaMon = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        btnXoaMon = new javax.swing.JButton();
-        btnBoQua = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         txtTenMon = new javax.swing.JTextField();
+        btnXoaMon = new javax.swing.JButton();
+        btnBoQua = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Xóa Món");
+        setTitle("Xóa Món");
 
         cboMaMon.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -62,6 +63,14 @@ public class XoaMon extends javax.swing.JFrame {
         });
 
         jLabel6.setText("Mã Món");
+
+        jLabel7.setText("Tên Món");
+
+        txtTenMon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTenMonActionPerformed(evt);
+            }
+        });
 
         btnXoaMon.setText("Xóa Món");
         btnXoaMon.addActionListener(new java.awt.event.ActionListener() {
@@ -77,21 +86,10 @@ public class XoaMon extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText("Tên Món");
-
-        txtTenMon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTenMonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,36 +100,29 @@ public class XoaMon extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnXoaMon, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBoQua, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnBoQua, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62)
+                        .addComponent(txtTenMon, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(62, 62, 62)
-                    .addComponent(txtTenMon, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboMaMon, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTenMon, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBoQua, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnXoaMon, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(122, 122, 122)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtTenMon, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(105, Short.MAX_VALUE)))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
@@ -213,7 +204,6 @@ public class XoaMon extends javax.swing.JFrame {
     private javax.swing.JButton btnBoQua;
     private javax.swing.JButton btnXoaMon;
     private javax.swing.JComboBox<String> cboMaMon;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField txtTenMon;
@@ -257,6 +247,27 @@ private void xoa() {
             stm.close();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Lỗi load data to combo!");
+            e.printStackTrace();
+        }
+    }
+    private void ThongTin() {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://DESKTOP-QPFGD23:1433;databaseName=QLNH";
+            Connection con = DriverManager.getConnection(url, "sa", "123");
+            String sql = "select tenmon, dongia, mama, anh from monan ";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                String mama = rs.getString(3);
+                String tenmon = rs.getString(1);
+                float dongia = rs.getFloat(2);
+                String anh = rs.getString(4);
+                ThongTinMon tt = new ThongTinMon(mama, tenmon, dongia, anh);
+                lstmon.add(tt);
+
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

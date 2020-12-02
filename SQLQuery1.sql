@@ -59,6 +59,7 @@ tenmon nvarchar(50) not null,
 dongia float not null,
 mota nvarchar(50) null,
 trangthai nvarchar(20) not null,
+anh nvarchar(50) null,
 primary key(mama)
 )
 select * from monan
@@ -83,6 +84,7 @@ soluong int,
 foreign key (mahd) references hoadon, 
 foreign key (mama) references monan
 )
+<<<<<<< HEAD
 drop table hoadonct
 CREATE TABLE HOADONCT
 (
@@ -94,6 +96,10 @@ CREATE TABLE HOADONCT
 	CONSTRAINT FK_MONAN_HOADONCT FOREIGN KEY(MAMA)
 	REFERENCES MONAN
 	)
+=======
+drop table hoadon
+drop table cthd
+>>>>>>> 043ab65e4bcff9ad6c3205d9fd057632f59d26e5
 drop table monan
 drop table cthd
 select * from nhanvien 
@@ -106,31 +112,31 @@ insert into khachhang values ('KH02','Dung Nam','1991-11-11','314313143','123521
 insert into khachhang values ('KH03','Gdcu Nam','1991-11-11','314313143','1235213')
 select * from monan
 
-insert into monan values ('MC04',N'Lẩu Gà',100000,null,N'Hoạt Động')
-insert into monan values ('MC05',N'Lẩu Bò',130000,null,N'Hoạt Động')
-insert into monan values ('MC06',N'Lẩu Hải Sản',150000,null,N'Hoạt Động')
-insert into monan values ('MC01',N'Súp Cua',30000,null,N'Hoạt Động')
-insert into monan values ('MC02',N'Súp Gà',20000,null,N'Hoạt Động')
-insert into monan values ('MC03',N'Súp Chay',20000,null,N'Hoạt Động')
-insert into monan values ('MC07',N'Cơm Niêu',45000,null,N'Hoạt Động')
-insert into monan values ('MC08',N'Cơm Bò Lắc',45000,null,N'Hoạt Động')
-insert into monan values ('MC09',N'Mực Nướng',60000,null,N'Hoạt Động')
-insert into monan values ('MC10',N'Bò Bít Tết',70000,null,N'Hoạt Động')
+insert into monan values ('MC04',N'Lẩu Gà',100000,null,N'Hoạt Động', 'lau ga.jpg')
+insert into monan values ('MC05',N'Lẩu Bò',130000,null,N'Hoạt Động', 'lau bo.jpg')
+insert into monan values ('MC06',N'Lẩu Hải Sản',150000,null,N'Hoạt Động', 'lau hai san.jpg')
+insert into monan values ('MC01',N'Súp Cua',30000,null,N'Hoạt Động','New Project.jpg')
+insert into monan values ('MC02',N'Súp Gà',20000,null,N'Hoạt Động', 'sup ga.jpg')
+insert into monan values ('MC03',N'Súp Chay',20000,null,N'Hoạt Động', 'sup chay.jpg')
+insert into monan values ('MC07',N'Cơm Niêu',45000,null,N'Hoạt Động', 'com nieu.jpg')
+insert into monan values ('MC08',N'Cơm Bò Lắc',45000,null,N'Hoạt Động', 'com-bo-luc-lac.jpg')
+insert into monan values ('MC09',N'Mực Nướng',60000,null,N'Hoạt Động', N'Mực-nướng-bơ.jpg')
+insert into monan values ('MC10',N'Bò Bít Tết',70000,null,N'Hoạt Động', 'bo bit tet.jpg')
 
-insert into monan values ('DU01',N'Lavie',10000,null,N'Hoạt Động')
-insert into monan values ('DU02',N'Coca Cola',25000,null,N'Hoạt Động')
-insert into monan values ('DU03',N'7Up',25000,null,N'Hoạt Động')
-insert into monan values ('DU04',N'Trà Đá',8000,null,N'Hoạt Động')
-insert into monan values ('DU05',N'Vodka',70000,null,N'Hoạt Động')
-insert into monan values ('DU06',N'Vang Đỏ',170000,null,N'Hoạt Động')
-insert into monan values ('DU07',N'Rượu Mơ',70000,null,N'Hoạt Động')
+insert into monan values ('DU01',N'Lavie',10000,null,N'Hoạt Động', 'lavie.png')
+insert into monan values ('DU02',N'Coca Cola',25000,null,N'Hoạt Động', 'coca.jpg')
+insert into monan values ('DU03',N'7Up',25000,null,N'Hoạt Động', '7up.jpg')
+insert into monan values ('DU04',N'Trà Đá',8000,null,N'Hoạt Động', 'tra da.jpg')
+insert into monan values ('DU05',N'Vodka',70000,null,N'Hoạt Động', 'vodka.jpg')
+insert into monan values ('DU06',N'Vang Đỏ',170000,null,N'Hoạt Động', 'vang do.png')
+insert into monan values ('DU07',N'Rượu Mơ',70000,null,N'Hoạt Động', 'ruou mo.jpg')
 
-insert into monan values ('TM01',N'Hoa Quả',50000,null,N'Hoạt Động')
-insert into monan values ('TM02',N'Kem Ly',20000,null,N'Hoạt Động')
-insert into monan values ('TM03',N'Sữa Chua',15000,null,N'Hoạt Động')
-insert into monan values ('TM04',N'Chè Nhãn',20000,null,N'Hoạt Động')
-insert into monan values ('TM05',N'Pudding',25000,null,N'Hoạt Động')
-insert into monan values ('TM06',N'Chè Cốm',20000,null,N'Hoạt Động')
+insert into monan values ('TM01',N'Hoa Quả',50000,null,N'Hoạt Động', 'hoa qua.jpg')
+insert into monan values ('TM02',N'Kem Ly',20000,null,N'Hoạt Động', 'kem ly.jpg')
+insert into monan values ('TM03',N'Sữa Chua',15000,null,N'Hoạt Động', 'sua chua.jpg')
+insert into monan values ('TM04',N'Chè Nhãn',20000,null,N'Hoạt Động', 'che nhan.jpg')
+insert into monan values ('TM05',N'Pudding',25000,null,N'Hoạt Động', 'pudding.jpg')
+insert into monan values ('TM06',N'Chè Cốm',20000,null,N'Hoạt Động', 'che com.jpg')
 
 
 
