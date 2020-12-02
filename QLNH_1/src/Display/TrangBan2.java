@@ -5,55 +5,17 @@
  */
 package Display;
 
-import dao.BanDAO;
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import model.Ban;
-
 /**
  *
  * @author Chung
  */
-public class TrangBan extends javax.swing.JFrame {
+public class TrangBan2 extends javax.swing.JFrame {
 
-    List<Ban> lst=new ArrayList<>();
-    BanDAO dao=new BanDAO();
-    public TrangBan() {
+    /**
+     * Creates new form TrangBan2
+     */
+    public TrangBan2() {
         initComponents();
-        loadDataToList();
-        setLocationRelativeTo(null);
-        jPanel2.setBackground(Color.white);
-        for(int i=0;i<lst.size();i++){
-            JButton btn=new JButton("Bàn "+(i+1));
-            if(lst.get(i).getTrangThai().equalsIgnoreCase("Trong")){
-                btn.setBackground(Color.green);
-            }            else if(lst.get(i).getTrangThai().equalsIgnoreCase("dang hoat dong")){
-                btn.setBackground(Color.red);
-            }
-            jPanel2.add(btn);
-            btn.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent ae) {
-               for(int i=0;i<lst.size();i++){
-                   if(btn.getText().equalsIgnoreCase("Bàn "+(i+1))){
-                       DatBanJFrame dbf=new DatBanJFrame("Bàn "+(i+1),lst.size());
-                       dbf.setVisible(true);
-                   }
-                    
-                    
-                    
-                }
-               }
-            });
-            
-            
-        }
-      
     }
 
     /**
@@ -75,23 +37,29 @@ public class TrangBan extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
+        jButton20 = new javax.swing.JButton();
+        jButton21 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButton22 = new javax.swing.JButton();
         jButton23 = new javax.swing.JButton();
         jButton24 = new javax.swing.JButton();
         jButton25 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
-            }
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
 
         jPanel1.setBackground(new java.awt.Color(39, 39, 39));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -114,7 +82,7 @@ public class TrangBan extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1);
 
-        jButton26.setBackground(new java.awt.Color(0, 153, 255));
+        jButton26.setBackground(new java.awt.Color(153, 153, 255));
         jButton26.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jButton26.setForeground(new java.awt.Color(255, 255, 255));
         jButton26.setText("Sân Vườn");
@@ -131,7 +99,7 @@ public class TrangBan extends javax.swing.JFrame {
         });
         jPanel1.add(jButton26);
 
-        jButton27.setBackground(new java.awt.Color(153, 153, 255));
+        jButton27.setBackground(new java.awt.Color(0, 153, 255));
         jButton27.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jButton27.setForeground(new java.awt.Color(255, 255, 255));
         jButton27.setText("Trong Nhà");
@@ -199,8 +167,83 @@ public class TrangBan extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Sân Vườn");
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 98, 33));
+        jLabel1.setText("Trong Nhà");
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 98, 33));
+
+        jButton6.setBackground(new java.awt.Color(35, 35, 35));
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("Bàn 09");
+        jPanel4.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 151, 76));
+
+        jButton7.setBackground(new java.awt.Color(35, 35, 35));
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setText("Bàn 01");
+        jPanel4.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 151, 76));
+
+        jButton8.setBackground(new java.awt.Color(35, 35, 35));
+        jButton8.setForeground(new java.awt.Color(255, 255, 255));
+        jButton8.setText("Bàn 05");
+        jPanel4.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 151, 76));
+
+        jButton9.setBackground(new java.awt.Color(35, 35, 35));
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setText("Bàn 13");
+        jPanel4.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 151, 76));
+
+        jButton10.setBackground(new java.awt.Color(35, 35, 35));
+        jButton10.setForeground(new java.awt.Color(255, 255, 255));
+        jButton10.setText("Bàn 04");
+        jPanel4.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, 151, 76));
+
+        jButton11.setBackground(new java.awt.Color(35, 35, 35));
+        jButton11.setForeground(new java.awt.Color(255, 255, 255));
+        jButton11.setText("Bàn 10");
+        jPanel4.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 151, 76));
+
+        jButton12.setBackground(new java.awt.Color(35, 35, 35));
+        jButton12.setForeground(new java.awt.Color(255, 255, 255));
+        jButton12.setText("Bàn 06");
+        jPanel4.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 151, 76));
+
+        jButton13.setBackground(new java.awt.Color(35, 35, 35));
+        jButton13.setForeground(new java.awt.Color(255, 255, 255));
+        jButton13.setText("Bàn 02");
+        jPanel4.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 151, 76));
+
+        jButton14.setBackground(new java.awt.Color(35, 35, 35));
+        jButton14.setForeground(new java.awt.Color(255, 255, 255));
+        jButton14.setText("Bàn 14");
+        jPanel4.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 151, 76));
+
+        jButton15.setBackground(new java.awt.Color(35, 35, 35));
+        jButton15.setForeground(new java.awt.Color(255, 255, 255));
+        jButton15.setText("Bàn 03");
+        jPanel4.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, 151, 76));
+
+        jButton16.setBackground(new java.awt.Color(35, 35, 35));
+        jButton16.setForeground(new java.awt.Color(255, 255, 255));
+        jButton16.setText("Bàn 07");
+        jPanel4.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, 151, 76));
+
+        jButton17.setBackground(new java.awt.Color(35, 35, 35));
+        jButton17.setForeground(new java.awt.Color(255, 255, 255));
+        jButton17.setText("Bàn 11");
+        jPanel4.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 151, 76));
+
+        jButton18.setBackground(new java.awt.Color(35, 35, 35));
+        jButton18.setForeground(new java.awt.Color(255, 255, 255));
+        jButton18.setText("Bàn 15");
+        jPanel4.add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 390, 151, 76));
+
+        jButton20.setBackground(new java.awt.Color(35, 35, 35));
+        jButton20.setForeground(new java.awt.Color(255, 255, 255));
+        jButton20.setText("Bàn 08");
+        jPanel4.add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 170, 151, 76));
+
+        jButton21.setBackground(new java.awt.Color(35, 35, 35));
+        jButton21.setForeground(new java.awt.Color(255, 255, 255));
+        jButton21.setText("Bàn 12");
+        jPanel4.add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 280, 151, 76));
 
         jPanel3.setOpaque(false);
 
@@ -268,9 +311,6 @@ public class TrangBan extends javax.swing.JFrame {
 
         jPanel4.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 840, -1));
 
-        jPanel2.setLayout(new java.awt.GridLayout(0, 3, 50, 50));
-        jPanel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 790, 440));
-
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/nen.jpg"))); // NOI18N
         jLabel2.setPreferredSize(new java.awt.Dimension(836, 587));
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, -1));
@@ -286,7 +326,7 @@ public class TrangBan extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -296,6 +336,10 @@ public class TrangBan extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton26ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
         // TODO add your handling code here:
@@ -312,18 +356,6 @@ public class TrangBan extends javax.swing.JFrame {
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton25ActionPerformed
-
-    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton26ActionPerformed
-
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-       
-    }//GEN-LAST:event_formWindowClosed
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-      
-    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -342,13 +374,13 @@ public class TrangBan extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TrangBan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrangBan2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TrangBan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrangBan2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TrangBan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrangBan2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TrangBan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrangBan2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -356,14 +388,25 @@ public class TrangBan extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TrangBan().setVisible(true);
+                new TrangBan2().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
+    private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
@@ -373,37 +416,14 @@ public class TrangBan extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
-private void loadDataToList(){
-   lst=dao.selectAll();
-//    for(int i=0;i<lst.size();i++){
-//        if(lst.get(i).getMaBan().equalsIgnoreCase("B01")){
-//            if(lst.get(i).getTrangThai().equalsIgnoreCase("Trong")){
-//                btnBan1.setBackground(Color.green);
-//            }else{
-//                btnBan1.setBackground(Color.red);
-//            }
-//        }
-//        else if(lst.get(i).getMaBan().equalsIgnoreCase("B02")){
-//            if(lst.get(i).getTrangThai().equalsIgnoreCase("Trong")){
-//                btnBan2.setBackground(Color.green);
-//            }else{
-//                btnBan2.setBackground(Color.red);
-//            }
-//        }
-//        else if(lst.get(i).getMaBan().equalsIgnoreCase("B03")){
-//            if(lst.get(i).getTrangThai().equalsIgnoreCase("Trong")){
-//                btnBan3.setBackground(Color.green);
-//            }else{
-//                btnBan3.setBackground(Color.red);
-//            }
-//        }
-//    }
-}
 }

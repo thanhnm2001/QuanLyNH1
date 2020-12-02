@@ -50,7 +50,7 @@ public class JDBCHelper {
        return null;
         
     }
-     public static void update(String sql,Object... args) {
+    public static void update(String sql,Object... args) {
         try {
             PreparedStatement ps=JDBCHelper.getStmt(sql, args);
             ps.executeUpdate();
