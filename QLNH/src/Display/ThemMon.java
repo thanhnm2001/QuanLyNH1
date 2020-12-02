@@ -28,7 +28,7 @@ public class ThemMon extends javax.swing.JFrame {
      * Creates new form ThemMon
      */
     ArrayList<ThongTinMon> lstmon = new ArrayList<>();
-    String filename;
+
     public ThemMon() {
         initComponents();
         setLocationRelativeTo(null);
@@ -56,8 +56,6 @@ public class ThemMon extends javax.swing.JFrame {
         btnThemMon = new javax.swing.JButton();
         txtMaMon = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        btnAnh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,15 +88,6 @@ public class ThemMon extends javax.swing.JFrame {
 
         jLabel6.setText("Mã Món");
 
-        jLabel7.setText("Ảnh");
-
-        btnAnh.setText("Chọn Ảnh");
-        btnAnh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAnhActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,38 +97,31 @@ public class ThemMon extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnBoQua, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnBoQua, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtTenMon, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtDonGia, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtMoTa, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cboTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtMaMon, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txtTenMon, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtDonGia, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtMoTa, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cboTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnAnh)
-                        .addGap(371, 371, 371))))
+                        .addComponent(txtMaMon, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(58, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(46, 46, 46)
@@ -170,16 +152,12 @@ public class ThemMon extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnAnh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(btnBoQua, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(425, Short.MAX_VALUE)
+                    .addContainerGap(357, Short.MAX_VALUE)
                     .addComponent(btnThemMon, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(26, 26, 26)))
         );
@@ -192,30 +170,8 @@ public class ThemMon extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThemMonActionPerformed
 
     private void btnBoQuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBoQuaActionPerformed
-    this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnBoQuaActionPerformed
-
-    private void btnAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnhActionPerformed
-        try {
-            JFileChooser fchoose = new JFileChooser();
-                FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                        "JPG & GIF Images", "jpg");
-                fchoose.setFileFilter(filter);
-                int hoi = fchoose.showOpenDialog(this);
-
-                if (hoi == JFileChooser.APPROVE_OPTION) {
-                    JOptionPane.showMessageDialog(this, "Đã chọn ảnh "+fchoose.getSelectedFile().getName());
-                    btnAnh.setEnabled(false);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Chưa chọn ảnh món ăn!");
-                    return;
-                }
-                filename = fchoose.getSelectedFile().getName();
-                
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_btnAnhActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,7 +210,6 @@ public class ThemMon extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAnh;
     private javax.swing.JButton btnBoQua;
     private javax.swing.JButton btnThemMon;
     private javax.swing.JComboBox<String> cboTrangThai;
@@ -264,7 +219,6 @@ public class ThemMon extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField txtDonGia;
     private javax.swing.JTextField txtMaMon;
     private javax.swing.JTextField txtMoTa;
@@ -272,26 +226,43 @@ public class ThemMon extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private void themMon() {
         try {
+            if (check() == true && checkma() == true) {
 
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String url = "jdbc:sqlserver://DESKTOP-QPFGD23:1433;databaseName=QLNH";
-            Connection con = DriverManager.getConnection(url, "sa", "123");
-            String sql = "insert into monan values(?,?,?,?,?,?)";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, txtMaMon.getText());
-            ps.setString(2, txtTenMon.getText());
-            ps.setFloat(3, Float.parseFloat(txtDonGia.getText()));
-            ps.setString(4, (txtMoTa.getText()));
-            ps.setString(5, cboTrangThai.getSelectedItem() + "");
-            ps.setString(6, filename);
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(this, "Save thành công!");
-            loadData();
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                String url = "jdbc:sqlserver://DESKTOP-QPFGD23:1433;databaseName=QLNH";
+                Connection con = DriverManager.getConnection(url, "sa", "123");
+                String sql = "insert into monan values(?,?,?,?,?,?)";
+
+                JFileChooser fchoose = new JFileChooser();
+                FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                        "JPG & GIF Images", "jpg");
+                fchoose.setFileFilter(filter);
+                int hoi = fchoose.showOpenDialog(this);
+
+                if (hoi == JFileChooser.APPROVE_OPTION) {
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this, "Chưa chọn ảnh món ăn!");
+                    return;
+                }
+                String filename = fchoose.getSelectedFile().getName();
+                PreparedStatement ps = con.prepareStatement(sql);
+                ps.setString(1, txtMaMon.getText());
+                ps.setString(2, txtTenMon.getText());
+                ps.setFloat(3, Float.parseFloat(txtDonGia.getText()));
+                ps.setString(4, (txtMoTa.getText()));
+                ps.setString(5, cboTrangThai.getSelectedItem() + "");
+                ps.setString(6, filename);
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Save thành công!");
+                loadData();
+            }
         } catch (Exception e) {
-            e.printStackTrace();
+
         }
     }
-    private void loadData(){
+
+    private void loadData() {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             String url = "jdbc:sqlserver://DESKTOP-QPFGD23:1433;databaseName=QLNH";
@@ -313,5 +284,59 @@ public class ThemMon extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Lỗi load data!");
             e.printStackTrace();
         }
+    }
+
+    private boolean check() {
+        try {
+            if (txtMaMon.getText().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(this, "Không để trống mã món");
+                txtMaMon.requestFocus();
+                return false;
+            }
+            if (txtTenMon.getText().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(this, "Không để trống tên món");
+                txtTenMon.requestFocus();
+                return false;
+            }
+            if (txtDonGia.getText().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(this, "Không để trống đơn giá");
+                txtDonGia.requestFocus();
+                return false;
+            }
+            try {
+                float gia = Float.parseFloat(txtDonGia.getText());
+                if (gia < 0) {
+                    JOptionPane.showMessageDialog(this, "Nhập giá lớn hơn 0");
+                    txtDonGia.requestFocus();
+                    return false;
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Sai định dạng giá");
+                txtDonGia.requestFocus();
+                return false;
+            }
+
+            if (txtMoTa.getText().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(this, "Không để trống mô tả");
+                txtMoTa.requestFocus();
+                return false;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return true;
+
+    }
+
+    public boolean checkma() {
+        for (ThongTinMon x : lstmon) {
+            if (txtMaMon.getText().equals(x.getMaMa())) {
+                JOptionPane.showMessageDialog(this, "Không được nhập trùng mã món");
+                txtMaMon.requestFocus();
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -8,6 +8,7 @@ package Display;
 import Class.ThongTinMon;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -24,6 +25,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.AncestorListener;
 import javax.swing.table.DefaultTableModel;
@@ -61,9 +64,10 @@ public class TrangMenu extends javax.swing.JFrame {
 //        lblMon2.setText("<html>"+lstmon.get(1).getTenmon() + "<br>" + lstmon.get(1).getDongia() +"<html>");
         for (int i = 0; i < lstmon.size(); i++) {
             JPanel pn = new JPanel();
-            pn.setSize(770, 470);
+            pn.setSize(800, 550);
+
 //            pn.setBackground(Color.yellow);
-            pn.setLayout(new GridLayout(4, 4));
+            pn.setLayout(new GridLayout(4, 3));
             for (int j = 7; j < 17; j++) {
                 JPanel pn1 = new JPanel();
 
@@ -81,7 +85,9 @@ public class TrangMenu extends javax.swing.JFrame {
                 pn1.add(lbl1);
                 pn1.add(lbl2);
 
+//                jScrollPane1.add(jPanel16);
                 jPanel16.add(pn);
+
                 pn.add(pn1);
             }
 
@@ -107,8 +113,8 @@ public class TrangMenu extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
         jPanel16 = new javax.swing.JPanel();
-        jScrollBar1 = new javax.swing.JScrollBar();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButton23 = new javax.swing.JButton();
@@ -247,24 +253,26 @@ public class TrangMenu extends javax.swing.JFrame {
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
         jPanel16.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel16.setPreferredSize(new java.awt.Dimension(800, 550));
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel16Layout.createSequentialGroup()
-                .addContainerGap(749, Short.MAX_VALUE)
-                .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(0, 900, Short.MAX_VALUE)
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel16Layout.createSequentialGroup()
-                .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGap(0, 600, Short.MAX_VALUE)
         );
 
-        jPanel4.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 770, 470));
+        jScrollPane1.setViewportView(jPanel16);
+
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 780, 460));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -359,9 +367,9 @@ public class TrangMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    TrangBan tb = new TrangBan();
-    tb.setVisible(true);
-    this.dispose();
+        TrangBan tb = new TrangBan();
+        tb.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
@@ -396,25 +404,25 @@ public class TrangMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton27MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    TrangMenu tm = new TrangMenu();
-    tm.setVisible(true);
-    this.dispose();
+        TrangMenu tm = new TrangMenu();
+        tm.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    TrangNhanVien tnv = new TrangNhanVien();
-    tnv.setVisible(true);
-    this.dispose();
+        TrangNhanVien tnv = new TrangNhanVien();
+        tnv.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-    System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
-    this.dispose();
-    TrangMenu tm = new TrangMenu();
-    tm.setVisible(true);
+        this.dispose();
+        TrangMenu tm = new TrangMenu();
+        tm.setVisible(true);
     }//GEN-LAST:event_jButton29ActionPerformed
 
     /**
@@ -471,14 +479,13 @@ public class TrangMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 private void ThongTin() {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             String url = "jdbc:sqlserver://DESKTOP-QPFGD23:1433;databaseName=QLNH";
-  
-            Connection con = DriverManager.getConnection(url, "sa", "dongtuan123");
+            Connection con = DriverManager.getConnection(url, "sa", "123");
             String sql = "select tenmon, dongia, mama, anh from monan ";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
