@@ -88,6 +88,7 @@ public class TrangMenu extends javax.swing.JFrame {
 //                jScrollPane1.add(jPanel16);
                 jPanel16.add(pn);
 
+                
                 pn.add(pn1);
             }
 
