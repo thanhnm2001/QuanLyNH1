@@ -81,6 +81,7 @@ create table cthd(
 mahd nvarchar(10) null,
 mama nvarchar(10) null,
 soluong int,
+thanhtien money,
 
 foreign key (mahd) references hoadon ON DELETE CASCADE ,
 foreign key (mama) references monan
@@ -89,6 +90,7 @@ ON DELETE CASCADE
 drop table hoadon
 drop table cthd
 drop table monan
+drop table ban
 select * from nhanvien
 insert into nhanvien values('ThanhNM','Thanh Nguyen','2001-11-11','0345678',1,'123431','1234578')
 insert into nhanvien values('ChungNQ','Chung Nguyen','2001-11-11','0345678',1,'123431','1234578')
@@ -125,17 +127,20 @@ insert into monan values ('TM04',N'Chè Nhãn',20000,null,N'Hoạt Động', 'ch
 insert into monan values ('TM05',N'Pudding',25000,null,N'Hoạt Động', 'pudding.jpg')
 insert into monan values ('TM06',N'Chè Cốm',20000,null,N'Hoạt Động', 'che com.jpg')
 
-
-
 select * from ban
 insert into ban values ('B01','ban01','trong nha','Hoat dong')
 insert into ban values ('B02','ban02','trong nha','Hoat dong')
 insert into ban values ('B03','ban03','trong nha','Hoat dong')
 select * from hoadon
-insert into hoadon values ('HD01','KH01','ThanhNM','B01',1200000,'2020-11-22')
-insert into hoadon values ('HD02','KH03','ThanhNM','B01',1200000,'2020-11-22')
-insert into hoadon values ('HD04','KH02','ThanhNM','B01',1200000,'2020-11-22')
 select * from cthd
-insert into cthd values ('HD02','MC01',2)
-insert into cthd values ('HD02','TM02',2)
+
+insert into hoadon values ('HD01','KH01','ThanhNM','B01',1200000,'2020-11-22')
+insert into hoadon values ('HD02','KH03','ThanhNM','B02',1200000,'2020-11-22')
+insert into hoadon values ('HD04','KH02','ThanhNM','B03',1200000,'2020-11-22')
+insert into cthd values ('HD02','MC01',2, 60000)
+insert into cthd values ('HD02','TM02',2, 40000)
+insert into cthd values ('HD01','TM03',1, 15000)
+insert into cthd values ('HD01','MC04',2, 200000)
+
+
 

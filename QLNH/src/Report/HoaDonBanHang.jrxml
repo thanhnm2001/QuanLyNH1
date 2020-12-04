@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8563f891-1366-4e26-a1bd-900cea320512">
+	<property name="ireport.zoom" value="1.948717100000005"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="48"/>
+	<parameter name="MAHD" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{hoadon_mahd}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT distinct
+     ban."maban" AS ban_maban,
+     cthd."mahd" AS cthd_mahd,
+     cthd."mama" AS cthd_mama,
+     cthd."soluong" AS cthd_soluong,
+     cthd."thanhtien" AS cthd_thanhtien,
+     hoadon."mahd" AS hoadon_mahd,
+     hoadon."makh" AS hoadon_makh,
+     hoadon."manv" AS hoadon_manv,
+     hoadon."maban" AS hoadon_maban,
+     hoadon."ngaylap" AS hoadon_ngaylap,
+     khachhang."makh" AS khachhang_makh,
+     khachhang."hoten" AS khachhang_hoten,
+     monan."maMA" AS monan_maMA,
+     monan."tenmon" AS monan_tenmon,
+     monan."dongia" AS monan_dongia,
+     nhanvien."manv" AS nhanvien_manv,
+     nhanvien."hoten" AS nhanvien_hoten,
+     hoadon."thanhtien" AS hoadon_thanhtien,
+     khachhang."sdt" AS khachhang_sdt
+FROM
+     "dbo"."ban" ban INNER JOIN "dbo"."hoadon" hoadon ON ban."maban" = hoadon."maban"
+     INNER JOIN "dbo"."cthd" cthd ON hoadon."mahd" = cthd."mahd"
+     INNER JOIN "dbo"."khachhang" khachhang ON hoadon."makh" = khachhang."makh"
+     INNER JOIN "dbo"."nhanvien" nhanvien ON hoadon."manv" = nhanvien."manv"
+     INNER JOIN "dbo"."monan" monan ON cthd."mama" = monan."maMA"
+WHERE
+     hoadon."mahd" = $P{MAHD}]]>
+	</queryString>
+	<field name="ban_maban" class="java.lang.String"/>
+	<field name="cthd_mahd" class="java.lang.String"/>
+	<field name="cthd_mama" class="java.lang.String"/>
+	<field name="cthd_soluong" class="java.lang.Integer"/>
+	<field name="cthd_thanhtien" class="java.math.BigDecimal"/>
+	<field name="hoadon_mahd" class="java.lang.String"/>
+	<field name="hoadon_makh" class="java.lang.String"/>
+	<field name="hoadon_manv" class="java.lang.String"/>
+	<field name="hoadon_maban" class="java.lang.String"/>
+	<field name="hoadon_ngaylap" class="java.lang.String"/>
+	<field name="khachhang_makh" class="java.lang.String"/>
+	<field name="khachhang_hoten" class="java.lang.String"/>
+	<field name="monan_maMA" class="java.lang.String"/>
+	<field name="monan_tenmon" class="java.lang.String"/>
+	<field name="monan_dongia" class="java.lang.Double"/>
+	<field name="nhanvien_manv" class="java.lang.String"/>
+	<field name="nhanvien_hoten" class="java.lang.String"/>
+	<field name="hoadon_thanhtien" class="java.lang.Double"/>
+	<field name="khachhang_sdt" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="126" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="75" height="79" uuid="af279fe6-80f3-4865-a61e-a01568dac69d"/>
+				<imageExpression><![CDATA["D:\\Downloads\\logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="106" y="0" width="342" height="36" uuid="04326aea-f2ef-48a5-abab-fa8392522a5b"/>
+				<textElement>
+					<font fontName="Tahoma" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nhà Hàng SSR Restaurant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="106" y="36" width="342" height="20" uuid="f8e04c04-f19b-479e-b7a8-17a7049f70cf"/>
+				<textElement>
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[Địa Chỉ: 1 Tràng Tiền, Hòa Kiếm,Hà Nội]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="106" y="56" width="342" height="20" uuid="d5cf97ae-1c8c-4964-ad1c-8a58a0eab2e8"/>
+				<textElement>
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[ĐT: 0999.888.666]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="106" y="91" width="342" height="20" uuid="f652e29f-8e66-4fab-8506-d9ee6b1a67bc"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hóa Đơn Thanh Toán]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="63" splitType="Stretch">
+			<textField>
+				<reportElement x="383" y="20" width="151" height="20" uuid="329b27fe-2e25-41ed-b579-9f3b0ebd0942"/>
+				<textFieldExpression><![CDATA[$F{khachhang_sdt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="383" y="0" width="155" height="20" uuid="617e0299-9a5d-4bb5-b124-da21aca73437"/>
+				<textFieldExpression><![CDATA[$F{khachhang_makh}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="106" y="0" width="100" height="20" uuid="5a2e0e43-bd5c-47d8-9718-3f88e7ece527"/>
+				<textFieldExpression><![CDATA[$F{hoadon_mahd}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="106" y="20" width="100" height="20" uuid="22dbd883-ffaa-463b-ad0f-b24f66340f13"/>
+				<textFieldExpression><![CDATA[$F{nhanvien_hoten}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="106" y="40" width="100" height="20" uuid="8f0e8e46-8e23-492c-8eca-d8f60fb8a83b"/>
+				<textFieldExpression><![CDATA[$F{hoadon_ngaylap}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="c1c387b0-96be-418d-8a8c-cf47fcf3fe5f"/>
+				<textElement>
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[Mã Hã Đơn:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="100" height="20" uuid="6592c694-ffaa-4416-bb4b-5117600ebd59"/>
+				<textElement>
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[Tên Nhân Viên: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="100" height="20" uuid="42a31b6b-1a5f-4333-8479-7d234a900b7d"/>
+				<textElement>
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[ Ngày Lập: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="283" y="0" width="100" height="20" uuid="b1811cfc-5fac-4b00-a94d-0b447cb96745"/>
+				<textElement>
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[Tên Khách Hàng: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="283" y="20" width="100" height="20" uuid="92e0425e-af39-4a5c-be15-a847c153a446"/>
+				<textElement>
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[ĐT Khách Hàng: ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="80" height="20" uuid="db788c8d-3d9d-49d3-9c24-f8edf035b537"/>
+				<textElement>
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[Mã Món Ăn]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="1" width="126" height="20" uuid="5547f900-160e-48b3-952c-142c3ca11c20"/>
+				<textElement>
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[Tên Món]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="206" y="0" width="114" height="20" uuid="83b1a159-c56a-4727-ab93-fad49fe2a815"/>
+				<textElement>
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[Đơn Giá]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="0" width="48" height="20" uuid="1d640793-755a-4d45-918b-5b0a965ebf0f"/>
+				<textElement>
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[Số Lượng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="383" y="0" width="111" height="20" uuid="0aa8d246-e413-4837-88f0-8c39e8efcd92"/>
+				<textElement>
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[Thành Tiền]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="494" y="0" width="61" height="20" uuid="300465a9-3a4b-4a98-992a-131bcd0304c2"/>
+				<textElement>
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[Ghi Chú]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="20" width="555" height="1" uuid="6803c058-61d7-4455-a0e7-f70385396deb"/>
+			</line>
+			<textField>
+				<reportElement x="5" y="1" width="75" height="20" uuid="c30a67e5-c85e-4d7f-b5e2-13f540bee82a"/>
+				<textFieldExpression><![CDATA[$F{monan_maMA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="1" width="126" height="20" uuid="9f25faf7-3cb9-4f37-9977-d6f457b55d68"/>
+				<textFieldExpression><![CDATA[$F{monan_tenmon}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="206" y="1" width="114" height="20" uuid="fc5184bd-ecba-4ecf-a48a-a4efc1c93f1c"/>
+				<textFieldExpression><![CDATA[$F{monan_dongia}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="320" y="1" width="48" height="20" uuid="2c4c6d62-aed4-4410-ac40-ec5a03652f03"/>
+				<textFieldExpression><![CDATA[$F{cthd_soluong}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="383" y="1" width="111" height="20" uuid="1201a959-a609-4557-83cd-a8848fdc71f7"/>
+				<textFieldExpression><![CDATA[$F{cthd_thanhtien}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="d2d5ed8a-1e0e-4042-8568-0540a02db02b"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="75" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="54" width="555" height="1" uuid="72ef4df0-3ea0-46bd-abb9-5066636ed7cd"/>
+			</line>
+			<textField pattern="#,##0">
+				<reportElement x="383" y="55" width="111" height="20" uuid="716a2334-1d94-477a-8e54-9e0b100d9270"/>
+				<textFieldExpression><![CDATA[$F{hoadon_thanhtien}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="283" y="55" width="85" height="20" uuid="7bd767fa-bf82-4fac-b8ae-0862087c3e05"/>
+				<textElement>
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[Tổng :]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="73" splitType="Stretch"/>
+	</summary>
+</jasperReport>
