@@ -139,3 +139,4 @@ select * from cthd
 insert into cthd values ('HD02','MC01',2)
 insert into cthd values ('HD02','TM02',2)
 
+select manv,password from nhanvien
