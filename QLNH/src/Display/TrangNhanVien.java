@@ -82,18 +82,16 @@ public class TrangNhanVien extends javax.swing.JFrame {
         jButton27 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Danh Sách Nhân Viên");
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 280, 33));
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 230, 33));
 
         jPanel3.setOpaque(false);
 
@@ -173,7 +171,7 @@ public class TrangNhanVien extends javax.swing.JFrame {
         );
 
         jPanel4.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 840, -1));
-        jPanel4.add(txttim, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 200, 40));
+        jPanel4.add(txttim, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, 160, 36));
 
         btntim.setText("Tìm kiếm");
         btntim.addActionListener(new java.awt.event.ActionListener() {
@@ -181,7 +179,7 @@ public class TrangNhanVien extends javax.swing.JFrame {
                 btntimActionPerformed(evt);
             }
         });
-        jPanel4.add(btntim, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 150, 40));
+        jPanel4.add(btntim, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, 130, 36));
 
         tblnv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -198,7 +196,7 @@ public class TrangNhanVien extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblnv);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 800, 340));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 800, 370));
 
         lblcurrrent.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblcurrrent.setForeground(new java.awt.Color(255, 0, 0));
@@ -211,7 +209,6 @@ public class TrangNhanVien extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(39, 39, 39));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setBackground(new java.awt.Color(102, 102, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -229,7 +226,7 @@ public class TrangNhanVien extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 7, -1, -1));
+        jPanel1.add(jButton1);
 
         jButton26.setBackground(new java.awt.Color(0, 153, 255));
         jButton26.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -247,7 +244,7 @@ public class TrangNhanVien extends javax.swing.JFrame {
                 jButton26ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton26, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 52, -1, -1));
+        jPanel1.add(jButton26);
 
         jButton27.setBackground(new java.awt.Color(153, 153, 255));
         jButton27.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -265,7 +262,7 @@ public class TrangNhanVien extends javax.swing.JFrame {
                 jButton27ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton27, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 97, -1, -1));
+        jPanel1.add(jButton27);
 
         jButton2.setBackground(new java.awt.Color(0, 0, 255));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -283,7 +280,7 @@ public class TrangNhanVien extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 142, -1, -1));
+        jPanel1.add(jButton2);
 
         jButton3.setBackground(new java.awt.Color(51, 153, 255));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -296,20 +293,7 @@ public class TrangNhanVien extends javax.swing.JFrame {
         jButton3.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (3).png"))); // NOI18N
         jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (2).png"))); // NOI18N
         jButton3.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (1).png"))); // NOI18N
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 187, -1, -1));
-
-        jButton4.setBackground(new java.awt.Color(35, 35, 35));
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side.png"))); // NOI18N
-        jButton4.setText("Đánh Giá");
-        jButton4.setBorderPainted(false);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setPreferredSize(new java.awt.Dimension(151, 40));
-        jButton4.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (3).png"))); // NOI18N
-        jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (2).png"))); // NOI18N
-        jButton4.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (1).png"))); // NOI18N
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 232, -1, -1));
+        jPanel1.add(jButton3);
 
         jButton5.setBackground(new java.awt.Color(35, 35, 35));
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -322,7 +306,7 @@ public class TrangNhanVien extends javax.swing.JFrame {
         jButton5.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (3).png"))); // NOI18N
         jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (2).png"))); // NOI18N
         jButton5.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (1).png"))); // NOI18N
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 277, -1, -1));
+        jPanel1.add(jButton5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -471,7 +455,7 @@ public class TrangNhanVien extends javax.swing.JFrame {
 //                        + "\n" + "Chuc vu " + chucvu
 //                        + "\n" + "So CMT " + tblnv.getValueAt(index, 6));
             } else {
-                JOptionPane.showMessageDialog(this, "Không tìm thấy người học này!");
+                JOptionPane.showMessageDialog(this, "Không tìm thấy nhân viên này!");
             }
 
             rs.close();
@@ -569,7 +553,6 @@ public class TrangNhanVien extends javax.swing.JFrame {
     private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
