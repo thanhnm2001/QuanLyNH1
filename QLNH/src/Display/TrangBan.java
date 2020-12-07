@@ -58,12 +58,6 @@ public class TrangBan extends javax.swing.JFrame {
         }
       
 
-<<<<<<< HEAD
-=======
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-       
-
->>>>>>> 659fe06307b3a4243a67458e1c38353101ffbaf3
     }
 
     /**

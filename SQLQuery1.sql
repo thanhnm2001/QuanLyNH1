@@ -81,13 +81,13 @@ create table cthd(
 mahd nvarchar(10) null,
 mama nvarchar(10) null,
 soluong int,
-<<<<<<< HEAD
+
 thanhtien money,
 
 foreign key (mahd) references hoadon ON DELETE CASCADE ,
-=======
+
 foreign key (mahd) references hoadon, 
->>>>>>> 98ce6e8a0f70f45f1826ea003dc083032f689b2e
+
 foreign key (mama) references monan
 )
 <<<<<<< HEAD
