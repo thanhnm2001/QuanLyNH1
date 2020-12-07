@@ -6,27 +6,26 @@
 package dao;
 
 import helper.JDBCHelper;
-import java.text.SimpleDateFormat;
 import java.util.List;
-import model.Bill;
+import model.DetailBill;
 
 /**
  *
  * @author Administrator
  */
-public class BillDAO extends DAO<Bill, String>{
+public class DetailBillDAO extends DAO<DetailBill, String>{
 
     @Override
-    public void insert(Bill entity) {
-        String sql="insert into hoadon values (?,?,?,?,?,?)";
-        String ngayLap=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(entity.getNgayLap());
-        JDBCHelper.update(sql, entity.getMaHD(),entity.getMaKH(),entity.getMaNV(),entity.getMaBan(),entity.getThanhTien(),ngayLap);
+    public void insert(DetailBill entity) {
+    String sql="insert into cthd values (?,?,?)";
+        JDBCHelper.update(sql, entity.getMaHD(),entity.getMaMA(),entity.getSL());
+        
+
     }
 
     @Override
-    public void update(Bill entity) {
-        String sql="update hoadon set manv=?,maban=?,thanhtien=? where mahd=?";
-        JDBCHelper.update(sql, entity.getMaNV(),entity.getMaBan(),entity.getThanhTien(),entity.getMaHD());
+    public void update(DetailBill entity) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -35,12 +34,12 @@ public class BillDAO extends DAO<Bill, String>{
     }
 
     @Override
-    public List<Bill> selectAll() {
+    public List<DetailBill> selectAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Bill selectById(String key) {
+    public DetailBill selectById(String key) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
