@@ -24,7 +24,7 @@ public class BanDAO extends DAO<Ban, String> {
 
     @Override
     public void update(Ban entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql="";
     }
 
     @Override
