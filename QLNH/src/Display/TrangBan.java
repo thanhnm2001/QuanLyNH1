@@ -30,11 +30,7 @@ public class TrangBan extends javax.swing.JFrame {
         initComponents();
         loadDataToList();
         setLocationRelativeTo(null);
-<<<<<<< HEAD
-      
-=======
 
->>>>>>> 13ef26fc5424b9935a004b816d5c9636a526cca4
         jPanel2.setBackground(Color.white);
         for(int i=0;i<lst.size();i++){
             JButton btn=new JButton("Bàn "+(i+1));
@@ -64,18 +60,7 @@ public class TrangBan extends javax.swing.JFrame {
         }
       
 
-<<<<<<< HEAD
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-       
 
-=======
-<<<<<<< HEAD
-=======
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-       
-
->>>>>>> 659fe06307b3a4243a67458e1c38353101ffbaf3
->>>>>>> 13ef26fc5424b9935a004b816d5c9636a526cca4
     }
 
     /**
