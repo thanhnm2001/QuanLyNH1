@@ -70,7 +70,7 @@ makh nvarchar(10) not null,
 manv nvarchar(10) not null,
 maban nvarchar(10) not null,
 thanhtien float,
-ngaylap date,
+ngaylap datetime,
 CONSTRAINT FK_HOADON PRIMARY KEY(MAHD),
 foreign key (makh) references khachhang(makh),
 foreign key (manv) references nhanvien(manv),
@@ -158,8 +158,8 @@ insert into hoadon values ('HD02','KH03','ThanhNM','B01',1200000,'2020-11-22')
 insert into hoadon values ('HD04','KH02','ThanhNM','B01',1200000,'2020-11-22')
 select * from cthd
 insert into cthd values ('HD02','MC01',2)
-insert into cthd values ('HD02','TM02',2)
-drop table hoadon
+drop table hoadoninsert into cthd values ('HD02','TM02',2)
+
 drop table cthd
 select * from ban
 delete from ban
@@ -170,6 +170,7 @@ select * from ban
 select * from monan
 select * from nhanvien
 select * from hoadon
+delete from hoadon where mahd='kh7'
 select * from khachhang
 select * from cthd
 insert into khachhang values('KH04','Thanh Nguyen','1991-11-11','0345690216','79823173')
@@ -177,3 +178,15 @@ insert into hoadon values ('HD1','KH04','ThanhNM','B01',20000,'1991-11-11')
 insert into hoadon values ('HD2','KH04','ThanhNM','B01',20000,'1991-11-11')
 insert into cthd values ('','',2)
 select * from hoadonct
+insert into hoadon values ('HD6','KH04','ThanhNM','B02',20000,'1991-11-11 19:10:22')
+select top 9 khachhang.makh,hoten,ngaysinh,sdt,socmt,mahd,ngaylap,thanhtien,maban from khachhang join hoadon on khachhang.makh=hoadon.makh where maban='b07' order by ngaylap DESC
+
+
+
+drop table cthd
+drop table hoadon
+select * from hoadon
+select * from cthd
+select * from hoadon
+select * from khachhang
+select * from cthd where mahd='hd11'

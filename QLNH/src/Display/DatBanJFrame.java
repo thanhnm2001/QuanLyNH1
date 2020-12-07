@@ -7,6 +7,7 @@ package Display;
 
 import dao.BillDAO;
 import dao.CustomerDAO;
+import dao.DetailBillDAO;
 import dao.FoodDAO;
 import helper.Auth;
 import helper.JDBCHelper;
@@ -15,6 +16,9 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,6 +32,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Bill;
 import model.Customer;
+import model.DetailBill;
 import model.Food;
 
 /**
@@ -37,27 +42,36 @@ import model.Food;
 public class DatBanJFrame extends javax.swing.JFrame {
 
     List<Food> lst = new ArrayList<>();
-    BillDAO dao2=new BillDAO();
+    List<Customer> lstCustomer=new ArrayList<>();
+    BillDAO dao2 = new BillDAO();
     FoodDAO dao = new FoodDAO();
     CustomerDAO dao1 = new CustomerDAO();
     DefaultTableModel model;
+    DetailBillDAO dao3 = new DetailBillDAO();
 
-    int i;
     int a;
     private String maBan;
     private int Size;
+    private String trangThai;
 
-    public DatBanJFrame(String maBan, int Size) {
+    public DatBanJFrame(String maBan, int Size, String trangThai) {
         this.maBan = maBan;
         this.Size = Size;
+        this.trangThai = trangThai;
         initComponents();
         setLocationRelativeTo(null);
         getContentPane().setBackground(Color.white);
         setTitle(maBan);
-        lst = dao.selectAll();
         model = (DefaultTableModel) tblList.getModel();
-//        JOptionPane.showMessageDialog(this, tblList.getRowCount());
 
+        lst = dao.selectAll();
+        lstCustomer=dao1.selectAll();
+        if (trangThai.equalsIgnoreCase("Trong")) {
+            btnPay.setEnabled(false);
+        }
+        loadHD();
+
+//        JOptionPane.showMessageDialog(this, tblList.getRowCount());
 //        pnl1.setSize(300, 274);
 //        pnl1.setLayout(new GridLayout(8, 3));
 //   pnl1.setLayout(new FlowLayout());
@@ -76,12 +90,33 @@ public class DatBanJFrame extends javax.swing.JFrame {
             btn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
+                    int row = tblList.getRowCount();
+                    int rex = 0;
                     for (int i = 0; i < lst.size(); i++) {
 
                         if (btn.getText().equalsIgnoreCase(lst.get(i).getNameFood())) {
-                            model.addRow(new Object[]{lst.get(i).getNameFood(), lst.get(i).getPrice(), 1});
+                            if (row > 0) {
+                                for (int j = 0; j < row; j++) {
+                                    if (btn.getText().equalsIgnoreCase((String) tblList.getValueAt(j, 0))) {
+                                        int value = (Integer) tblList.getValueAt(j, 2) + 1;
+                                        tblList.setValueAt(value, j, 2);
+                                        rex++;
+                                        total();
+//                               break;
+
+                                    }
+                                }
+                                if (rex == 0) {
+                                    model.addRow(new Object[]{lst.get(i).getNameFood(), lst.get(i).getPrice(), 1});
 //                                JOptionPane.showMessageDialog(pnl1, (Integer)tblList.getValueAt(0, 2));
-                            total();
+                                    total();
+                                }
+                            } else {
+                                model.addRow(new Object[]{lst.get(i).getNameFood(), lst.get(i).getPrice(), 1});
+//                                JOptionPane.showMessageDialog(pnl1, (Integer)tblList.getValueAt(0, 2));
+                                total();
+
+                            }
 
                         }
 
@@ -102,8 +137,8 @@ public class DatBanJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnPutTable = new javax.swing.JButton();
+        btnPay = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -130,17 +165,17 @@ public class DatBanJFrame extends javax.swing.JFrame {
 
         jLabel1.setText("Mã khách hàng");
 
-        jButton1.setText("Đặt bàn");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnPutTable.setText("Đặt bàn");
+        btnPutTable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnPutTableActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Thanh Toán");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnPay.setText("Thanh Toán");
+        btnPay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnPayActionPerformed(evt);
             }
         });
 
@@ -222,9 +257,9 @@ public class DatBanJFrame extends javax.swing.JFrame {
                                         .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addContainerGap(40, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnPutTable)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
+                        .addComponent(btnPay)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -232,7 +267,7 @@ public class DatBanJFrame extends javax.swing.JFrame {
                         .addGap(139, 139, 139))))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnPay, btnPutTable});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,15 +296,15 @@ public class DatBanJFrame extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPutTable, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTotal)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton2)
+                        .addComponent(btnPay)
                         .addComponent(jLabel5)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton2, jLabel5, lblTotal});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnPay, btnPutTable, jLabel5, lblTotal});
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, txtMaKH});
 
@@ -280,31 +315,58 @@ public class DatBanJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         add();
+    private void btnPutTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPutTableActionPerformed
+     if(trangThai.equalsIgnoreCase("dang hoat dong")){
+       if(check()){
+             repairCustomer();
+             for(int i=0;i<Size;i++){
+                 if(maBan.equalsIgnoreCase("Bàn "+i)){
+                     repairBill("b0"+i);
+                 }
+             }
+             updateDetailBill();
+             addCTHD();
+         JOptionPane.showMessageDialog(this,"Đặt lại thành công");
+       }
+     }else{
+           if(check()){
+                add();
         for (int i = 1; i <= Size; i++) {
             if (maBan.equalsIgnoreCase("Bàn " + i)) {
-               
-              
-                addHD("b0"+i);
-                 String sql = "update ban set trangthai=? where maban=?";
+
+                addHD("b0" + i);
+                addCTHD();
+//             JOptionPane.showMessageDialog(this, "b0"+i);
+                String sql = "update ban set trangthai=? where maban=?";
                 JDBCHelper.update(sql, "dang hoat dong", "b0" + i);
-                  JOptionPane.showMessageDialog(this, "Đặt bàn thành công");
+                JOptionPane.showMessageDialog(this, "Đặt bàn thành công");
+                this.dispose();
+                TrangBan tb = new TrangBan();
+        tb.setVisible(true);
 
             }
         }
+           }
+     }
 //        String sql = "update ban set trangthai=? where maban=?";
 //        JDBCHelper.update(sql, "dang hoat dong", "b01");
 //        JOptionPane.showMessageDialog(this, "Đặt bàn thành công");
-       
 
-    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String sql = "update ban set trangthai=? where maban=?";
-        JDBCHelper.update(sql, "Trong", "b01");
-        JOptionPane.showMessageDialog(this, "Thanh toán thành công");
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnPutTableActionPerformed
+
+    private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
+        for (int i = 1; i <= Size; i++) {
+            if (maBan.equalsIgnoreCase("Bàn " + i)) {
+                String sql = "update ban set trangthai=? where maban=?";
+                JDBCHelper.update(sql, "Trong", "b0" + i);
+                JOptionPane.showMessageDialog(this, "Thanh toán thành công");
+                this.dispose();
+                TrangBan tb = new TrangBan();
+                tb.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_btnPayActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         this.dispose();
@@ -348,8 +410,8 @@ public class DatBanJFrame extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnPay;
+    private javax.swing.JButton btnPutTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -376,24 +438,28 @@ private void setUpButton() {
         float total = 0;
         int row = tblList.getRowCount();
         for (int i = 0; i < row; i++) {
-            total += (Float) tblList.getValueAt(i, 1);
+            float price =(Float)tblList.getValueAt(i, 1);
+            int amount=(Integer)tblList.getValueAt(i, 2);
+            float number=price*amount;
+          
+            total += number;
             lblTotal.setText(total + "");
         }
     }
 
-    private void check() {
-//        int row=tblList.getRowCount();
-//         for(int i=0;i<row;i++){
-//            if(btn.getText().equalsIgnoreCase((String)tblList.getValueAt(i, 0))){
-//                int value=(Integer)tblList.getValueAt(i, 0);
-//                JOptionPane.showMessageDialog(this, value);
-//                
-//                
-//int row=tblList.getRowCount();
-//for(int i=0;i<row;i++){
-//    JOptionPane.showMessageDialog(this, (String)tblList.getValueAt(i, 0));
-//}
-    }
+//    private void check() {
+////        int row=tblList.getRowCount();
+////         for(int i=0;i<row;i++){
+////            if(btn.getText().equalsIgnoreCase((String)tblList.getValueAt(i, 0))){
+////                int value=(Integer)tblList.getValueAt(i, 0);
+////                JOptionPane.showMessageDialog(this, value);
+////                
+////                
+////int row=tblList.getRowCount();
+////for(int i=0;i<row;i++){
+////    JOptionPane.showMessageDialog(this, (String)tblList.getValueAt(i, 0));
+////}
+//    }
 
     private void check2(String btnText) {
         int row = tblList.getRowCount();
@@ -441,17 +507,132 @@ private void setUpButton() {
         } catch (Exception e) {
         }
     }
-    private void addHD(String maban){
-        String maHD=txtMaHD.getText();
-        String maKH=txtMaKH.getText();
-        String maNV=Auth.user.getMaNV();
-        String maBan=maban;
-        float thanhTien=Float.parseFloat(lblTotal.getText());
-        Date date=new Date();
-        String ngayLap=new SimpleDateFormat("yyyy-MM-dd").format(date);
-       
-        String sql="insert into hoadon values (?,?,?,?,?,?)";
-        JDBCHelper.update(sql, maHD,maKH,maNV,maBan,thanhTien,ngayLap);
+
+    private void addHD(String maban) {
+        String maHD = txtMaHD.getText();
+        String maKH = txtMaKH.getText();
+        String maNV = Auth.user.getMaNV();
+        String maBan = maban;
+        float thanhTien = Float.parseFloat(lblTotal.getText());
+        Date date = new Date();
+        Bill bill = new Bill(maHD, maKH, maNV, maBan, thanhTien, date);
+        dao2.insert(bill);
+
     }
 
+    private void addCTHD() {
+        int row = tblList.getRowCount();
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < lst.size(); j++) {
+                if (lst.get(j).getNameFood().equalsIgnoreCase((String) tblList.getValueAt(i, 0))) {
+                    String maMA = lst.get(i).getIdFood();
+                    String maHD = txtMaHD.getText();
+                    int SL = (Integer) tblList.getValueAt(i, 2);
+                    DetailBill detailBill = new DetailBill(maHD, maMA, SL);
+                    dao3.insert(detailBill);
+
+                }
+            }
+        }
+    }
+
+    private void loadHD() {
+        String mB = "";
+        for (int i = 1; i <= Size; i++) {
+            if (maBan.equalsIgnoreCase("Bàn " + i)) {
+                mB = "b0" + i;
+            }
+        }
+        if (trangThai.equalsIgnoreCase("dang hoat dong")) {
+            btnPutTable.setText("Đặt lại");
+            txtMaHD.setEditable(false);
+            txtMaKH.setEditable(false);
+            String sql = "select top 1 khachhang.makh,hoten,ngaysinh,sdt,socmt,mahd,ngaylap,thanhtien,maban from khachhang join hoadon on khachhang.makh=hoadon.makh where maban=? order by ngaylap DESC";
+            try {
+                PreparedStatement ps = JDBCHelper.getStmt(sql, mB);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    txtMaKH.setText(rs.getString(1));
+                    txtTenKH.setText(rs.getString(2));
+                    txtNgaySinh.setText(rs.getString(3));
+                    txtSDT.setText(rs.getString(4));
+                    txtCMT.setText(rs.getString(5));
+                    txtMaHD.setText(rs.getString(6));
+
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(DatBanJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            String sql1 = "select * from cthd where mahd=?";
+            try {
+                PreparedStatement ps1 = JDBCHelper.getStmt(sql1, txtMaHD.getText());
+                ResultSet rs1 = ps1.executeQuery();
+                while (rs1.next()) {
+                    for (int i = 0; i < lst.size(); i++) {
+                        if (lst.get(i).getIdFood().equalsIgnoreCase(rs1.getString(2))) {
+                            model.addRow(new Object[]{lst.get(i).getNameFood(), lst.get(i).getPrice(), rs1.getInt(3)});
+                        }
+                    }
+                    total();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(DatBanJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+
+    }
+    private void repairCustomer(){
+        try {
+            String maKH = txtMaKH.getText();
+            String hoTen = txtTenKH.getText();
+            String SDT = txtSDT.getText();
+            String CMT = txtCMT.getText();
+            Date ngaySinh = new SimpleDateFormat("yyyy-MM-dd").parse(txtNgaySinh.getText());
+
+            Customer cs = new Customer(maKH, hoTen, ngaySinh, SDT, CMT);
+            dao1.update(cs);
+        } catch (ParseException ex) {
+            Logger.getLogger(DatBanJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    private boolean check(){
+        try {
+            Date date=new SimpleDateFormat("yyyy-MM-dd").parse(txtNgaySinh.getText());
+        } catch (ParseException ex) {
+           
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập ngày sinh đúng định dạng năm-tháng-ngày");
+             return false;
+        }
+        try {
+            int sdt=Integer.parseInt(txtSDT.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập số điện thoại gồm các chữ số");
+            return false;
+        } 
+        if(txtTenKH.getText().equalsIgnoreCase("")){
+            JOptionPane.showMessageDialog(this, "Vui lòng không để trống tên khách hàng");
+            return false;        
+        }else if(txtCMT.getText().equalsIgnoreCase("")){
+            JOptionPane.showMessageDialog(this, "Vui lòng không để trống số chứng minh thư khách hàng");
+            return false;        
+        }
+        
+        return true;
+    }
+    private void repairBill(String maban){
+        String maHD = txtMaHD.getText();
+        String maKH = txtMaKH.getText();
+        String maNV = Auth.user.getMaNV();
+        String maBan = maban;
+        float thanhTien = Float.parseFloat(lblTotal.getText());
+        Date date = new Date();
+        Bill bill = new Bill(maHD, maKH, maNV, maBan, thanhTien, date);
+        dao2.update(bill);
+    }
+    private void updateDetailBill(){
+        String sql="delete from cthd where mahd=?";
+        JDBCHelper.update(sql, txtMaHD.getText());
+    }
 }

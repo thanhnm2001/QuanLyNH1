@@ -28,7 +28,7 @@ public class TrangBan extends javax.swing.JFrame {
         initComponents();
         loadDataToList();
         setLocationRelativeTo(null);
-<<<<<<< HEAD
+
         jPanel2.setBackground(Color.white);
         for(int i=0;i<lst.size();i++){
             JButton btn=new JButton("Bàn "+(i+1));
@@ -41,9 +41,10 @@ public class TrangBan extends javax.swing.JFrame {
             btn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
+                   
                for(int i=0;i<lst.size();i++){
                    if(btn.getText().equalsIgnoreCase("Bàn "+(i+1))){
-                       DatBanJFrame dbf=new DatBanJFrame("Bàn "+(i+1),lst.size());
+                       DatBanJFrame dbf=new DatBanJFrame("Bàn "+(i+1),lst.size(),lst.get(i).getTrangThai());
                        dbf.setVisible(true);
                    }
                     
@@ -56,10 +57,7 @@ public class TrangBan extends javax.swing.JFrame {
             
         }
       
-=======
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-       
->>>>>>> 043ab65e4bcff9ad6c3205d9fd057632f59d26e5
+
     }
 
     /**
@@ -90,6 +88,7 @@ public class TrangBan extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Table Manager");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);

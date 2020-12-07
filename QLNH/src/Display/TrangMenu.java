@@ -484,7 +484,7 @@ public class TrangMenu extends javax.swing.JFrame {
 private void ThongTin() {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String url = "jdbc:sqlserver://DESKTOP-QPFGD23:1433;databaseName=QLNH";
+            String url = "jdbc:sqlserver://THANHJOKER:1433;databaseName=QLNH";
             Connection con = DriverManager.getConnection(url, "sa", "123");
             String sql = "select tenmon, dongia, mama, anh from monan ";
             Statement stm = con.createStatement();
