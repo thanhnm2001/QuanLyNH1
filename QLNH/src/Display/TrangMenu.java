@@ -387,9 +387,9 @@ public class TrangMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        TrangBan tb = new TrangBan();
-        tb.setVisible(true);
-        this.dispose();
+//        TrangBan tb = new TrangBan();
+//        tb.setVisible(true);
+//        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
