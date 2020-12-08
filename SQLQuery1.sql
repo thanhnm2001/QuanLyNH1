@@ -209,3 +209,4 @@ select * from cthd
 select * from hoadon
 select * from khachhang
 select * from cthd where mahd='hd11'
+select * from ban

@@ -45,10 +45,10 @@ public class TrangNhanVien extends javax.swing.JFrame {
         model = new DefaultTableModel();
         model = (DefaultTableModel) tblnv.getModel();
         loaddata();
-          if (lstnv.size() > 0) {
-                index = 0;
-                showdetail();
-            }
+        if (lstnv.size() > 0) {
+            index = 0;
+            showdetail();
+        }
         loadtable();
 
     }
@@ -362,32 +362,43 @@ public class TrangNhanVien extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         try {
-//             index = tblnv.getSelectedRow();
+            int index = tblnv.getSelectedRow();
             if (lstnv.size() <= 0) {
                 JOptionPane.showMessageDialog(this, "Không còn dữ liệu để xóa");
                 return;
             }
-            int hoi = JOptionPane.showConfirmDialog(this, "Bạn muốn xóa mã nhân viên " + tblnv.getValueAt(index, 1));
-            if (hoi != JOptionPane.YES_OPTION) {
-                return;
+            if (index >= 0) {
+
+                String manv = tblnv.getValueAt(index, 1) + "";
+                String hoten = tblnv.getValueAt(index, 2) + "";
+                String ngaysinh = tblnv.getValueAt(index, 3) + "";
+                String sdt = tblnv.getValueAt(index, 4) + "";
+                String cmt = tblnv.getValueAt(index, 6) + "";
+                String chucVu = tblnv.getValueAt(index, 5) + "";
+                int hoi = JOptionPane.showConfirmDialog(this, "Bạn muốn xóa mã nhân viên " + tblnv.getValueAt(index, 1));
+                if (hoi != JOptionPane.YES_OPTION) {
+                    return;
+                }
+                lstnv.remove(index);
+                //xoa trong csdl va bang%
+                String sql = "delete from nhanvien\n"
+                        + "where manv=?";
+
+                PreparedStatement pstm = cn.prepareStatement(sql);
+                // dien gia tri cho cac dau
+                pstm.setString(1, tblnv.getValueAt(index, 1) + "");
+                pstm.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Xóa thành công");
+                model.setRowCount(0);
+                loadtable();
+                showdetail();
+            } else{
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn nhân viên trước khi xóa!!!");
             }
-            lstnv.remove(index);
-            //xoa trong csdl va bang%
-            String sql = "delete from nhanvien\n"
-                    + "where manv=?";
 
-            PreparedStatement pstm = cn.prepareStatement(sql);
-            // dien gia tri cho cac dau
-            pstm.setString(1, tblnv.getValueAt(index, 1) + "");
-            pstm.executeUpdate();
-            JOptionPane.showMessageDialog(this, "Xóa thành công");
-            model.setRowCount(0);
-            loadtable();
-            showdetail();
 //            showdetail();
-
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Không xóa được nhân viên này!!!");
+           
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnxoaActionPerformed
@@ -406,8 +417,8 @@ public class TrangNhanVien extends javax.swing.JFrame {
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
-       new DoiMatKhau().setVisible(true);
-       this.dispose();
+        new DoiMatKhau().setVisible(true);
+        this.dispose();
 
     }//GEN-LAST:event_btndoimkActionPerformed
 
