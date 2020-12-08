@@ -60,7 +60,8 @@ public class FoodDAO extends DAO<Food, String>{
 
     @Override
     public Food selectById(String key) {
-        
+        Food ds=new Food();
+        return ds;
     }
 
     @Override

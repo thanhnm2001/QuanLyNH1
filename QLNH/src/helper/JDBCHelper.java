@@ -19,8 +19,8 @@ import java.util.logging.Logger;
  */
 public class JDBCHelper {
    static String user="sa";
-    static String pass="123";
-    static String url="jdbc:sqlserver://THANHJOKER:1433;databaseName=QLNH";
+    static String pass="dongtuan123";
+    static String url="jdbc:sqlserver://DESKTOP-D3866G6:1433;databaseName=QLNH";
     public static PreparedStatement getStmt(String sql,Object... args) throws SQLException{
         Connection cn=DriverManager.getConnection(url, user, pass);
         PreparedStatement stmt;

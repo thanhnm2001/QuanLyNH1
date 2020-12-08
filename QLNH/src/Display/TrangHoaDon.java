@@ -448,9 +448,9 @@ public class TrangHoaDon extends javax.swing.JFrame {
 
     private void loadDataToTable1() {
         try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String url = "jdbc:sqlserver://DESKTOP-QPFGD23:1433;databaseName=QLNH";
-            Connection con = DriverManager.getConnection(url, "sa", "123");
+           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://DESKTOP-D3866G6:1433;databaseName=QLNH";
+            Connection con = DriverManager.getConnection(url, "sa", "dongtuan123");
             String sql = "select mahd, makh, manv, maban, ngaylap from hoadon";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
@@ -475,9 +475,11 @@ public class TrangHoaDon extends javax.swing.JFrame {
     private void loadDataToTable2() {
         try {
             model2.setRowCount(0);
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String url = "jdbc:sqlserver://DESKTOP-QPFGD23:1433;databaseName=QLNH";
-            Connection con = DriverManager.getConnection(url, "sa", "123");
+//            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+//            String url = "jdbc:sqlserver://DESKTOP-QPFGD23:1433;databaseName=QLNH";
+  Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://DESKTOP-D3866G6:1433;databaseName=QLNH";
+            Connection con = DriverManager.getConnection(url, "sa", "dongtuan123");
             String sql = "select distinct cthd.mama, monan.tenmon, monan.dongia, cthd.soluong, ((monan.dongia)*(cthd.soluong)) as tong\n"
                     + "from hoadon join cthd on hoadon.mahd = cthd.mahd\n"
                     + "			join monan on cthd.mama = monan.mama\n"

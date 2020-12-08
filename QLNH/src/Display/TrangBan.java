@@ -6,9 +6,11 @@
 package Display;
 
 import dao.BanDAO;
+import helper.JDBCHelper;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
@@ -41,9 +43,10 @@ public class TrangBan extends javax.swing.JFrame {
             btn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent ae) {
+                   
                for(int i=0;i<lst.size();i++){
                    if(btn.getText().equalsIgnoreCase("Bàn "+(i+1))){
-                       DatBanJFrame dbf=new DatBanJFrame("Bàn "+(i+1),lst.size());
+                       DatBanJFrame dbf=new DatBanJFrame("Bàn "+(i+1),lst.size(),lst.get(i).getTrangThai());
                        dbf.setVisible(true);
                    }
                     
@@ -57,8 +60,6 @@ public class TrangBan extends javax.swing.JFrame {
         }
       
 
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-       
 
     }
 
@@ -90,6 +91,7 @@ public class TrangBan extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Table Manager");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -274,8 +276,13 @@ public class TrangBan extends javax.swing.JFrame {
 
         jPanel4.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 840, -1));
 
+<<<<<<< HEAD
+        jPanel2.setLayout(new java.awt.GridLayout(1, 3, 50, 50));
+        jPanel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 790, 440));
+=======
         jPanel2.setLayout(new java.awt.GridLayout(0, 3, 50, 50));
         jPanel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 800, 440));
+>>>>>>> 13ef26fc5424b9935a004b816d5c9636a526cca4
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/nen.jpg"))); // NOI18N
         jLabel2.setPreferredSize(new java.awt.Dimension(836, 587));
