@@ -11,23 +11,18 @@ package Class;
  */
 public class CTHoaDon {
     String mama, tenmon;
-    Float donGia, thanhTien;
-    int soLuong;
+    String donGia, thanhTien;
+    String soLuong;
 
     public CTHoaDon() {
     }
 
-    public CTHoaDon(String mama, String tenmon, Float donGia, Float thanhTien, int soLuong) {
+    public CTHoaDon(String mama, String tenmon, String donGia, String thanhTien, String soLuong) {
         this.mama = mama;
         this.tenmon = tenmon;
         this.donGia = donGia;
         this.thanhTien = thanhTien;
         this.soLuong = soLuong;
-    }
-
-    @Override
-    public String toString() {
-        return "CTHoaDon{" + "mama=" + mama + ", tenmon=" + tenmon + ", donGia=" + donGia + ", thanhTien=" + thanhTien + ", soLuong=" + soLuong + '}';
     }
 
     public String getMama() {
@@ -46,28 +41,30 @@ public class CTHoaDon {
         this.tenmon = tenmon;
     }
 
-    public Float getDonGia() {
+    public String getDonGia() {
         return donGia;
     }
 
-    public void setDonGia(Float donGia) {
+    public void setDonGia(String donGia) {
         this.donGia = donGia;
     }
 
-    public Float getThanhTien() {
+    public String getThanhTien() {
         return thanhTien;
     }
 
-    public void setThanhTien(Float thanhTien) {
+    public void setThanhTien(String thanhTien) {
         this.thanhTien = thanhTien;
     }
 
-    public int getSoLuong() {
+    public String getSoLuong() {
         return soLuong;
     }
 
-    public void setSoLuong(int soLuong) {
+    public void setSoLuong(String soLuong) {
         this.soLuong = soLuong;
     }
+
+    
     
 }

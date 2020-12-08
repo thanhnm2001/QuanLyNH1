@@ -7,28 +7,30 @@ package Display;
 
 import Class.CTHoaDon;
 import Class.HoaDon;
+import Class.XuatExcel;
 import helper.DBConnection;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.InputStream;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Hashtable;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
+import jxl.Workbook;
+import jxl.write.Blank;
+import jxl.write.Formula;
+import jxl.write.Label;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+
 
 /**
  *
@@ -72,6 +74,7 @@ public class TrangHoaDon extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtTongTien = new javax.swing.JTextField();
@@ -178,6 +181,24 @@ public class TrangHoaDon extends javax.swing.JFrame {
         });
         jPanel1.add(jButton4);
 
+        jButton8.setBackground(new java.awt.Color(35, 35, 35));
+        jButton8.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(255, 255, 255));
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side.png"))); // NOI18N
+        jButton8.setText("Đăng Xuất");
+        jButton8.setBorderPainted(false);
+        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton8.setPreferredSize(new java.awt.Dimension(151, 40));
+        jButton8.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (3).png"))); // NOI18N
+        jButton8.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (2).png"))); // NOI18N
+        jButton8.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (1).png"))); // NOI18N
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton8);
+
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -185,6 +206,11 @@ public class TrangHoaDon extends javax.swing.JFrame {
         jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 480, -1, -1));
 
         txtTongTien.setEditable(false);
+        txtTongTien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTongTienActionPerformed(evt);
+            }
+        });
         jPanel4.add(txtTongTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(709, 480, 110, -1));
 
         jScrollPane.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -349,49 +375,20 @@ public class TrangHoaDon extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        JFileChooser chooser = new JFileChooser();
-        int i = chooser.showSaveDialog(chooser);
-        if (i == JFileChooser.APPROVE_OPTION) {
-            File file = chooser.getSelectedFile();
-            try {
-                FileWriter out = new FileWriter(file + ".xls");
-                BufferedWriter bwrite = new BufferedWriter(out);
-                DefaultTableModel model = (DefaultTableModel) tblHoaDon.getModel();
-                DefaultTableModel model2 = (DefaultTableModel) tblCTHoaDon.getModel();
-                
-                // ten Cot
-                for (int j = 0; j < tblHoaDon.getColumnCount(); j++) {
-                    bwrite.write(model.getColumnName(j) + "\t");
-                }
-                bwrite.write("\n");
-                // Lay du lieu dong
-                for (int j = 0; j < tblHoaDon.getRowCount(); j++) {
-                    for (int k = 0; k < tblHoaDon.getColumnCount(); k++) {
-                        bwrite.write(model.getValueAt(j, k) + "\t");
-                    }
-                    bwrite.write("\n");
-                }
-                
-                for (int j = 0; j < tblCTHoaDon.getColumnCount(); j++) {
-                    bwrite.write(model2.getColumnName(j) + "\t");
-                }
-                bwrite.write("\n");
-                for (int j = 0; j < tblCTHoaDon.getRowCount(); j++) {
-                    for (int k = 0; k < tblCTHoaDon.getColumnCount(); k++) {
-                        bwrite.write(model2.getValueAt(j, k) + "\t");
-                    }
-                    bwrite.write("\n");
-                }
-                bwrite.write("\n");
-                bwrite.write("Tổng Tiền: "+ txtTongTien.getText());
-                
-                bwrite.close();
-                JOptionPane.showMessageDialog(null, "Lưu file thành công!");
-            } catch (Exception e2) {
-                JOptionPane.showMessageDialog(null, "Lỗi khi lưu file!");
-            }
-        }
+
+    xuatExcelPOI();
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void txtTongTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTongTienActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTongTienActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    DangNhap dn = new DangNhap();
+    dn.setVisible(true);
+    this.dispose();
+    
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -436,6 +433,7 @@ public class TrangHoaDon extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -487,17 +485,16 @@ public class TrangHoaDon extends javax.swing.JFrame {
             index = tblHoaDon.getSelectedRow();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, (String) tblHoaDon.getValueAt(index, 0));
-//PreparedStatement ps = con.prepareStatement(sql);
-//ps.setString(1, "HD01");
+
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 String mama = rs.getString(1);
                 String tenmon = rs.getString(2);
-                Float gia = rs.getFloat(3);
-                int sl = rs.getInt(4);
-                Float tong = rs.getFloat(5);
+                String gia = rs.getString(3);
+                String sl = rs.getString(4);
+                String tong = rs.getString(5);
 
-                model2.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getFloat(3), rs.getInt(4), rs.getFloat(5)});
+                model2.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)});
 
                 CTHoaDon cthd = new CTHoaDon(mama, tenmon, gia, tong, sl);
                 lstCTHoaDon.add(cthd);
@@ -512,16 +509,68 @@ public class TrangHoaDon extends javax.swing.JFrame {
         try {
 
             Hashtable map = new Hashtable();
-            String file = "src/Report/HoaDonBanHang.jrxml";
+            String file = "C:\\Users\\Chung\\Desktop\\nh1\\QuanLyNH1\\QLNH\\src\\Report\\HoaDonBanHang.jrxml";
             JasperReport report = JasperCompileManager.compileReport(file);
 
             map.put("MaHD", hd);
 
             JasperPrint p = JasperFillManager.fillReport(report, map, DBConnection.conn);
-            JasperViewer.viewReport(p, false);
-            
+            JasperViewer.viewReport(p, true);
+
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    private void xuatExcelPOI() {
+        try {
+            WritableWorkbook workbook = Workbook.createWorkbook(new File("src/Report/ThongKeHoaDon.xlsx"));
+            WritableSheet sheet1 = workbook.createSheet("Thống Kê Hóa Đơn", 0);
+
+            sheet1.addCell(new Label(0, 0, "Thống Kê Hóa Đơn"));
+            
+            sheet1.addCell(new Label(0, 2, "Mã Hóa Đơn"));
+            sheet1.addCell(new Label(1, 2, "Mã Khách Hàng"));
+            sheet1.addCell(new Label(2, 2, "Mã Nhân Viên"));
+            sheet1.addCell(new Label(3, 2, "Mã Bàn"));
+            sheet1.addCell(new Label(4, 2, "Ngày Lập"));
+
+            int row = 3;
+            int coll = 0;
+            for (int r = row, i = 0; r < tblHoaDon.getRowCount() + row; r++, i++) {
+                for (int c = coll, j = 0; c < tblHoaDon.getColumnCount() + coll; c++, j++) {
+                    sheet1.addCell(new Label(c, r, (String) model.getValueAt(i, j)));
+                }
+            }
+            
+            WritableSheet sheet2 = workbook.createSheet("Chi Tiết Hóa Đơn", 1);
+            
+            sheet2.addCell(new Label(0, 0,  "Hóa Đơn Mã"));
+            sheet2.addCell(new Label(1, 1, (String) tblHoaDon.getValueAt(index, 0)));
+            
+            sheet2.addCell(new Label(0, 2, "Mã Món"));
+            sheet2.addCell(new Label(1, 2, "Tên Món"));
+            sheet2.addCell(new Label(2, 2, "Giá Món"));
+            sheet2.addCell(new Label(3, 2, "Số Lượng"));
+            sheet2.addCell(new Label(4, 2, "Thành Tiền"));
+            index = tblHoaDon.getSelectedRow();
+            
+
+            int row1 = 3;
+            int coll1 = 0;
+            for (int r = row1, i = 0; r < tblCTHoaDon.getRowCount() + row1; r++, i++) {
+                for (int c = coll1, j = 0; c < tblCTHoaDon.getColumnCount() + coll1; c++, j++) {
+                    sheet2.addCell(new Label(c, r, (String) model2.getValueAt(i, j)));
+                }
+            }
+            sheet2.addCell(new Label(3, 12, "Tổng Tiền"));
+            sheet2.addCell(new Label(4, 12, txtTongTien.getText()));
+            workbook.write();
+            workbook.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("success");
     }
 }
