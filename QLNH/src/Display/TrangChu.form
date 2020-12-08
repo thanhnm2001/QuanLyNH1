@@ -137,14 +137,14 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JButton" name="btnDanhGia">
+    <Component class="javax.swing.JButton" name="btnThongKe">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/image/danhgia.png"/>
+          <Image iconType="3" name="/image/thongke.jpg"/>
         </Property>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/image/danhgia1.png"/>
+          <Image iconType="3" name="/image/thongke1.jpg"/>
         </Property>
       </Properties>
       <Constraints>

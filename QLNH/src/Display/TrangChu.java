@@ -47,7 +47,7 @@ public class TrangChu extends javax.swing.JFrame {
         btnMenu = new javax.swing.JButton();
         btnBan = new javax.swing.JButton();
         btnDangXuat = new javax.swing.JButton();
-        btnDanhGia = new javax.swing.JButton();
+        btnThongKe = new javax.swing.JButton();
         btnDMK = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lblImage = new javax.swing.JLabel();
@@ -107,10 +107,10 @@ public class TrangChu extends javax.swing.JFrame {
         });
         getContentPane().add(btnDangXuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 420, 180, 90));
 
-        btnDanhGia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/danhgia.png"))); // NOI18N
-        btnDanhGia.setBorderPainted(false);
-        btnDanhGia.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/danhgia1.png"))); // NOI18N
-        getContentPane().add(btnDanhGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, 180, 90));
+        btnThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/thongke.jpg"))); // NOI18N
+        btnThongKe.setBorderPainted(false);
+        btnThongKe.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/thongke1.jpg"))); // NOI18N
+        getContentPane().add(btnThongKe, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, 180, 90));
 
         btnDMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/chìa.png"))); // NOI18N
         btnDMK.setBorderPainted(false);
@@ -201,9 +201,9 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton btnBan;
     private javax.swing.JButton btnDMK;
     private javax.swing.JButton btnDangXuat;
-    private javax.swing.JButton btnDanhGia;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnNhanVien;
+    private javax.swing.JButton btnThongKe;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
