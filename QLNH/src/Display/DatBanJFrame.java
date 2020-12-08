@@ -528,7 +528,8 @@ private void setUpButton() {
                     String maMA = lst.get(i).getIdFood();
                     String maHD = txtMaHD.getText();
                     int SL = (Integer) tblList.getValueAt(i, 2);
-                    DetailBill detailBill = new DetailBill(maHD, maMA, SL);
+                    float thanhTien=0;
+                    DetailBill detailBill = new DetailBill(maHD, maMA, SL,thanhTien);
                     dao3.insert(detailBill);
 
                 }
@@ -617,6 +618,9 @@ private void setUpButton() {
         }else if(txtCMT.getText().equalsIgnoreCase("")){
             JOptionPane.showMessageDialog(this, "Vui lòng không để trống số chứng minh thư khách hàng");
             return false;        
+        }
+        if(lblTotal.getText().equalsIgnoreCase("")){
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn món");
         }
         
         return true;

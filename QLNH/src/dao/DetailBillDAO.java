@@ -17,8 +17,8 @@ public class DetailBillDAO extends DAO<DetailBill, String>{
 
     @Override
     public void insert(DetailBill entity) {
-    String sql="insert into cthd values (?,?,?)";
-        JDBCHelper.update(sql, entity.getMaHD(),entity.getMaMA(),entity.getSL());
+    String sql="insert into cthd values (?,?,?,?)";
+        JDBCHelper.update(sql, entity.getMaHD(),entity.getMaMA(),entity.getSL(),entity.getThanhTien());
         
 
     }

@@ -60,7 +60,6 @@ public class TrangBan extends javax.swing.JFrame {
         }
       
 
-
     }
 
     /**
@@ -271,7 +270,14 @@ public class TrangBan extends javax.swing.JFrame {
                 .addGap(0, 2, Short.MAX_VALUE))
         );
 
+<<<<<<< HEAD
+        jPanel4.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 840, -1));
+
+        jPanel2.setLayout(new java.awt.GridLayout(0, 3, 50, 50));
+        jPanel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 800, 440));
+=======
         jPanel2.setLayout(new java.awt.GridLayout(1, 3, 50, 50));
+>>>>>>> d2a1aa917f601f9199331d53024a93c63f14d3c1
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/nen.jpg"))); // NOI18N
         jLabel2.setPreferredSize(new java.awt.Dimension(836, 587));

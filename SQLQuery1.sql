@@ -90,7 +90,7 @@ foreign key (mahd) references hoadon,
 
 foreign key (mama) references monan
 )
-
+<<<<<<< HEAD
 drop table hoadonct
 CREATE TABLE HOADONCT
 (
@@ -102,18 +102,18 @@ CREATE TABLE HOADONCT
 	CONSTRAINT FK_MONAN_HOADONCT FOREIGN KEY(MAMA)
 	REFERENCES MONAN
 	)
-
+=======
 drop table hoadon
 drop table cthd
-
+>>>>>>> 043ab65e4bcff9ad6c3205d9fd057632f59d26e5
 drop table monan
-
+<<<<<<< HEAD
 drop table ban
 select * from nhanvien
-
+=======
 drop table cthd
 select * from nhanvien 
-
+>>>>>>> 98ce6e8a0f70f45f1826ea003dc083032f689b2e
 insert into nhanvien values('ThanhNM','Thanh Nguyen','2001-11-11','0345678',1,'123431','1234578')
 insert into nhanvien values('ChungNQ','Chung Nguyen','2001-11-11','0345678',1,'123431','1234578')
 insert into nhanvien values('TuanDV',	'Tuan Dong','2001-11-11','0345678',1,'123431','1234578')
@@ -163,7 +163,7 @@ insert into ban values ('B13','ban03','trong nha','Trong')
 	delete ban where maban='b13'
 select * from hoadon
 select * from cthd
-
+<<<<<<< HEAD
 
 insert into hoadon values ('HD01','KH01','ThanhNM','B01',1200000,'2020-11-22')
 insert into hoadon values ('HD02','KH03','ThanhNM','B02',1200000,'2020-11-22')
@@ -183,8 +183,7 @@ select * from ban
 delete from ban
 delete from hoadon
 update ban set trangthai='dang hoat dong' where maban='b03'
-
-select manv,password from nhanvien
+>>>>>>> 98ce6e8a0f70f45f1826ea003dc083032f689b2e
 
 select * from ban
 select * from monan
@@ -198,9 +197,6 @@ insert into hoadon values ('HD1','KH04','ThanhNM','B01',20000,'1991-11-11')
 insert into hoadon values ('HD2','KH04','ThanhNM','B01',20000,'1991-11-11')
 insert into cthd values ('','',2)
 select * from hoadonct
-<<<<<<< HEAD
-
-=======
 insert into hoadon values ('HD6','KH04','ThanhNM','B02',20000,'1991-11-11 19:10:22')
 select top 9 khachhang.makh,hoten,ngaysinh,sdt,socmt,mahd,ngaylap,thanhtien,maban from khachhang join hoadon on khachhang.makh=hoadon.makh where maban='b07' order by ngaylap DESC
 
@@ -213,4 +209,4 @@ select * from cthd
 select * from hoadon
 select * from khachhang
 select * from cthd where mahd='hd11'
->>>>>>> 13ef26fc5424b9935a004b816d5c9636a526cca4
+select * from ban
