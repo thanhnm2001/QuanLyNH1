@@ -77,10 +77,10 @@ public class TrangNhanVien extends javax.swing.JFrame {
         lblcurrrent = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton26 = new javax.swing.JButton();
-        jButton27 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnban = new javax.swing.JButton();
+        btnsan = new javax.swing.JButton();
+        btntrong = new javax.swing.JButton();
+        btnmenumon = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
@@ -210,77 +210,77 @@ public class TrangNhanVien extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(39, 39, 39));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton1.setBackground(new java.awt.Color(102, 102, 255));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side.png"))); // NOI18N
-        jButton1.setText("Bàn");
-        jButton1.setBorderPainted(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setPreferredSize(new java.awt.Dimension(149, 40));
-        jButton1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (3).png"))); // NOI18N
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (2).png"))); // NOI18N
-        jButton1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (1).png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnban.setBackground(new java.awt.Color(102, 102, 255));
+        btnban.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnban.setForeground(new java.awt.Color(255, 255, 255));
+        btnban.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side.png"))); // NOI18N
+        btnban.setText("Bàn");
+        btnban.setBorderPainted(false);
+        btnban.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnban.setPreferredSize(new java.awt.Dimension(149, 40));
+        btnban.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (3).png"))); // NOI18N
+        btnban.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (2).png"))); // NOI18N
+        btnban.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (1).png"))); // NOI18N
+        btnban.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnbanActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
+        jPanel1.add(btnban);
 
-        jButton26.setBackground(new java.awt.Color(0, 153, 255));
-        jButton26.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jButton26.setForeground(new java.awt.Color(255, 255, 255));
-        jButton26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side.png"))); // NOI18N
-        jButton26.setText("Sân Vườn");
-        jButton26.setBorderPainted(false);
-        jButton26.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton26.setPreferredSize(new java.awt.Dimension(151, 40));
-        jButton26.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (3).png"))); // NOI18N
-        jButton26.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (2).png"))); // NOI18N
-        jButton26.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (1).png"))); // NOI18N
-        jButton26.addActionListener(new java.awt.event.ActionListener() {
+        btnsan.setBackground(new java.awt.Color(0, 153, 255));
+        btnsan.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnsan.setForeground(new java.awt.Color(255, 255, 255));
+        btnsan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side.png"))); // NOI18N
+        btnsan.setText("Sân Vườn");
+        btnsan.setBorderPainted(false);
+        btnsan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnsan.setPreferredSize(new java.awt.Dimension(151, 40));
+        btnsan.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (3).png"))); // NOI18N
+        btnsan.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (2).png"))); // NOI18N
+        btnsan.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (1).png"))); // NOI18N
+        btnsan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton26ActionPerformed(evt);
+                btnsanActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton26);
+        jPanel1.add(btnsan);
 
-        jButton27.setBackground(new java.awt.Color(153, 153, 255));
-        jButton27.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jButton27.setForeground(new java.awt.Color(255, 255, 255));
-        jButton27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side.png"))); // NOI18N
-        jButton27.setText("Trong Nhà");
-        jButton27.setBorderPainted(false);
-        jButton27.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton27.setPreferredSize(new java.awt.Dimension(151, 40));
-        jButton27.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (3).png"))); // NOI18N
-        jButton27.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (2).png"))); // NOI18N
-        jButton27.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (1).png"))); // NOI18N
-        jButton27.addActionListener(new java.awt.event.ActionListener() {
+        btntrong.setBackground(new java.awt.Color(153, 153, 255));
+        btntrong.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btntrong.setForeground(new java.awt.Color(255, 255, 255));
+        btntrong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side.png"))); // NOI18N
+        btntrong.setText("Trong Nhà");
+        btntrong.setBorderPainted(false);
+        btntrong.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btntrong.setPreferredSize(new java.awt.Dimension(151, 40));
+        btntrong.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (3).png"))); // NOI18N
+        btntrong.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (2).png"))); // NOI18N
+        btntrong.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (1).png"))); // NOI18N
+        btntrong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton27ActionPerformed(evt);
+                btntrongActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton27);
+        jPanel1.add(btntrong);
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 255));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side.png"))); // NOI18N
-        jButton2.setText("Menu Món");
-        jButton2.setBorderPainted(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setPreferredSize(new java.awt.Dimension(151, 40));
-        jButton2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (3).png"))); // NOI18N
-        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (1).png"))); // NOI18N
-        jButton2.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (1).png"))); // NOI18N
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnmenumon.setBackground(new java.awt.Color(0, 0, 255));
+        btnmenumon.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnmenumon.setForeground(new java.awt.Color(255, 255, 255));
+        btnmenumon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side.png"))); // NOI18N
+        btnmenumon.setText("Menu Món");
+        btnmenumon.setBorderPainted(false);
+        btnmenumon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnmenumon.setPreferredSize(new java.awt.Dimension(151, 40));
+        btnmenumon.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (3).png"))); // NOI18N
+        btnmenumon.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (1).png"))); // NOI18N
+        btnmenumon.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (1).png"))); // NOI18N
+        btnmenumon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnmenumonActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2);
+        jPanel1.add(btnmenumon);
 
         jButton3.setBackground(new java.awt.Color(51, 153, 255));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -306,6 +306,11 @@ public class TrangNhanVien extends javax.swing.JFrame {
         jButton5.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (3).png"))); // NOI18N
         jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (2).png"))); // NOI18N
         jButton5.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (1).png"))); // NOI18N
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -422,21 +427,30 @@ public class TrangNhanVien extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btndoimkActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnbanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.dispose();
+        new TrangBan().setVisible(true);
+//        
+    }//GEN-LAST:event_btnbanActionPerformed
 
-    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
+    private void btnsanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton26ActionPerformed
+        this.dispose();
+        new TrangBan2().setVisible(true);
+        
+    }//GEN-LAST:event_btnsanActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnmenumonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmenumonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        this.dispose();
+//        new TrangMenu().setVisible(true);
+       
+    }//GEN-LAST:event_btnmenumonActionPerformed
 
-    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
+    private void btntrongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntrongActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton27ActionPerformed
+    }//GEN-LAST:event_btntrongActionPerformed
 
     private void btntimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntimActionPerformed
         // TODO add your handling code here:
@@ -518,6 +532,12 @@ public class TrangNhanVien extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        new DangNhap().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -555,14 +575,14 @@ public class TrangNhanVien extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnadd;
+    private javax.swing.JButton btnban;
     private javax.swing.JButton btndoimk;
+    private javax.swing.JButton btnmenumon;
+    private javax.swing.JButton btnsan;
     private javax.swing.JButton btntim;
+    private javax.swing.JButton btntrong;
     private javax.swing.JButton btnupdate;
     private javax.swing.JButton btnxoa;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton26;
-    private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
