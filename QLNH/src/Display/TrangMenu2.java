@@ -80,6 +80,7 @@ public class TrangMenu2 extends javax.swing.JFrame {
         jButton28 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel16 = new javax.swing.JPanel();
@@ -195,7 +196,7 @@ public class TrangMenu2 extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side.png"))); // NOI18N
-        jButton5.setText("Đăng Xuất");
+        jButton5.setText("Hóa Đơn");
         jButton5.setBorderPainted(false);
         jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton5.setPreferredSize(new java.awt.Dimension(151, 40));
@@ -208,6 +209,24 @@ public class TrangMenu2 extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton5);
+
+        jButton6.setBackground(new java.awt.Color(35, 35, 35));
+        jButton6.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side.png"))); // NOI18N
+        jButton6.setText("Đăng Xuất");
+        jButton6.setBorderPainted(false);
+        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton6.setPreferredSize(new java.awt.Dimension(151, 40));
+        jButton6.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (3).png"))); // NOI18N
+        jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (2).png"))); // NOI18N
+        jButton6.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/side (1).png"))); // NOI18N
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton6);
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -325,9 +344,9 @@ public class TrangMenu2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    TrangBan tb = new TrangBan();
-    tb.setVisible(true);
-    this.dispose();
+//    TrangBan tb = new TrangBan();
+//    tb.setVisible(true);
+//    this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
@@ -364,7 +383,9 @@ public class TrangMenu2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-    System.exit(0);
+    TrangHoaDon hd = new TrangHoaDon();
+    hd.setVisible(true);
+    this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
@@ -372,6 +393,12 @@ public class TrangMenu2 extends javax.swing.JFrame {
         TrangMenu2 tm2 = new TrangMenu2();
         tm2.setVisible(true);
     }//GEN-LAST:event_jButton29ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    DangNhap dn = new DangNhap();
+    dn.setVisible(true);
+    this.dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -421,6 +448,7 @@ public class TrangMenu2 extends javax.swing.JFrame {
     private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
