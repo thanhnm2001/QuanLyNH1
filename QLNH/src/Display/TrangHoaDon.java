@@ -18,6 +18,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -76,15 +77,18 @@ public class TrangHoaDon extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        txtTongTien = new javax.swing.JTextField();
+        tabs = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
         jScrollPane = new javax.swing.JScrollPane();
         tblHoaDon = new javax.swing.JTable();
+        jButton7 = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCTHoaDon = new javax.swing.JTable();
-        jPanel3 = new javax.swing.JPanel();
+        txtTongTien = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -201,18 +205,6 @@ public class TrangHoaDon extends javax.swing.JFrame {
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Tổng: ");
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 480, -1, -1));
-
-        txtTongTien.setEditable(false);
-        txtTongTien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTongTienActionPerformed(evt);
-            }
-        });
-        jPanel4.add(txtTongTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(709, 480, 110, -1));
-
         jScrollPane.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jScrollPaneMouseClicked(evt);
@@ -237,7 +229,39 @@ public class TrangHoaDon extends javax.swing.JFrame {
         });
         jScrollPane.setViewportView(tblHoaDon);
 
-        jPanel4.add(jScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 800, 200));
+        jButton7.setBackground(new java.awt.Color(35, 35, 53));
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setText("Xuất File Excel");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton7)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
+        );
+
+        tabs.addTab("Thống Kê Hóa Đơn", jPanel2);
 
         tblCTHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -249,9 +273,15 @@ public class TrangHoaDon extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblCTHoaDon);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 800, 210));
+        txtTongTien.setEditable(false);
+        txtTongTien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTongTienActionPerformed(evt);
+            }
+        });
 
-        jPanel3.setOpaque(false);
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Tổng: ");
 
         jButton6.setBackground(new java.awt.Color(35, 35, 53));
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
@@ -262,33 +292,49 @@ public class TrangHoaDon extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setBackground(new java.awt.Color(35, 35, 53));
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("Xuất File Excel");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21)
+                        .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButton6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                    .addComponent(txtTongTien, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        tabs.addTab("Chi Tiết Hóa Đơn", jPanel5);
+
+        jPanel4.add(tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 790, 500));
+
+        jPanel3.setOpaque(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(567, Short.MAX_VALUE)
-                .addComponent(jButton7)
-                .addGap(37, 37, 37)
-                .addComponent(jButton6)
-                .addGap(24, 24, 24))
+            .addGap(0, 840, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 36, Short.MAX_VALUE))
+            .addGap(0, 75, Short.MAX_VALUE)
         );
 
         jPanel4.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 840, -1));
@@ -361,6 +407,7 @@ public class TrangHoaDon extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        tabs.setSelectedIndex(1);
     }//GEN-LAST:event_tblHoaDonMouseClicked
 
     private void tblHoaDonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMousePressed
@@ -368,15 +415,21 @@ public class TrangHoaDon extends javax.swing.JFrame {
     }//GEN-LAST:event_tblHoaDonMousePressed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-
-        index = tblHoaDon.getSelectedRow();
+        if(tblCTHoaDon.getRowCount() == 0){
+            JOptionPane.showMessageDialog(this, "Bảng không có dữ liệu!");
+            tabs.setSelectedIndex(0);
+        }else{
+            index = tblHoaDon.getSelectedRow();
         xuatHD((String) tblHoaDon.getValueAt(index, 0));
+        }
+        
 
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
 
     xuatExcelPOI();
+   
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void txtTongTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTongTienActionPerformed
@@ -437,10 +490,13 @@ public class TrangHoaDon extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblCTHoaDon;
     private javax.swing.JTable tblHoaDon;
     private javax.swing.JTextField txtTongTien;
@@ -449,8 +505,8 @@ public class TrangHoaDon extends javax.swing.JFrame {
     private void loadDataToTable1() {
         try {
            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String url = "jdbc:sqlserver://DESKTOP-D3866G6:1433;databaseName=QLNH";
-            Connection con = DriverManager.getConnection(url, "sa", "dongtuan123");
+            String url = "jdbc:sqlserver://DESKTOP-QPFGD23:1433;databaseName=QLNH";
+            Connection con = DriverManager.getConnection(url, "sa", "123");
             String sql = "select mahd, makh, manv, maban, ngaylap from hoadon";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
@@ -478,8 +534,8 @@ public class TrangHoaDon extends javax.swing.JFrame {
 //            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 //            String url = "jdbc:sqlserver://DESKTOP-QPFGD23:1433;databaseName=QLNH";
   Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String url = "jdbc:sqlserver://DESKTOP-D3866G6:1433;databaseName=QLNH";
-            Connection con = DriverManager.getConnection(url, "sa", "dongtuan123");
+            String url = "jdbc:sqlserver://DESKTOP-QPFGD23:1433;databaseName=QLNH";
+            Connection con = DriverManager.getConnection(url, "sa", "123");
             String sql = "select distinct cthd.mama, monan.tenmon, monan.dongia, cthd.soluong, ((monan.dongia)*(cthd.soluong)) as tong\n"
                     + "from hoadon join cthd on hoadon.mahd = cthd.mahd\n"
                     + "			join monan on cthd.mama = monan.mama\n"
@@ -573,6 +629,6 @@ public class TrangHoaDon extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("success");
+        JOptionPane.showMessageDialog(this, "Xuất file thành công!");
     }
 }
